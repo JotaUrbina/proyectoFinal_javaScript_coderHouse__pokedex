@@ -73,38 +73,6 @@ class Pokedex {
       return filterStat.sort((pokemonA, pokemonB) => pokemonB[property] - pokemonA[property]);
     }
   }
-
-  /*  printPokemonList(pokemons) {
-    pokemons.map((pokemon) => {
-      let cardContainer = document.createElement("div");
-      cardContainer.innerHTML = `<p><b>Nombre:</b> ${pokemon.nombre}</p>
-        <p><b>Número:</b> ${pokemon.numero}</p>
-        <p><b>tipo:</b> ${pokemon.tipo1} ${pokemon.tipo2}</p>
-        <p><b>Región:</b> ${pokemon.region}</p>
-        <p><b>PS:</b> ${pokemon.ps}</p>
-        <p><b>Ataque:</b> ${pokemon.atq}</p>
-        <p><b>Defensa:</b> ${pokemon.def}</p>
-        <p><b>Ataque especial:</b> ${pokemon.atqEsp}</p>
-        <p><b>Defensa especial:</b> ${pokemon.defEsp}</p>
-        <p><b>Velocidad:</b> ${pokemon.speed}</p> <br><br>`;
-      document.body.append(cardContainer);
-      return pokemon;
-    });
-  }
-  printOne(pokemon) {
-    let cardContainer = document.createElement("div");
-    cardContainer.innerHTML = `<p><b>Nombre:</b> ${pokemon.nombre}</p>
-        <p><b>Número:</b> ${pokemon.numero}</p>
-        <p><b>tipo:</b> ${pokemon.tipo1} ${pokemon.tipo2}</p>
-        <p><b>Región:</b> ${pokemon.region}</p>
-        <p><b>PS:</b> ${pokemon.ps}</p>
-        <p><b>Ataque:</b> ${pokemon.atq}</p>
-        <p><b>Defensa:</b> ${pokemon.def}</p>
-        <p><b>Ataque especial:</b> ${pokemon.atqEsp}</p>
-        <p><b>Defensa especial:</b> ${pokemon.defEsp}</p>
-      <p><b>Velocidad:</b> ${pokemon.speed}</p> <br><br>`;
-    document.body.append(cardContainer);
-  } */
 }
 
 ////////////////////////////////////////////////
