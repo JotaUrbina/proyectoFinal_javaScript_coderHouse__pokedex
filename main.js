@@ -124,9 +124,10 @@ let cardContainer = document.createElement("div");
 const parent = document.getElementById("parent");
 const button = document.getElementById("button");
 button.addEventListener("click", app);
+const title = document.getElementById("titulo");
 
 function printPokeList(pokemons) {
-  pokemons.map((pokemon) => {
+  for (let pokemon of pokemons) {
     let cardContainer = document.createElement("div");
     cardContainer.innerHTML = `<p><b>Nombre:</b> ${pokemon.nombre}</p>
       <p><b>Número:</b> ${pokemon.numero}</p>
@@ -139,7 +140,7 @@ function printPokeList(pokemons) {
       <p><b>Defensa especial:</b> ${pokemon.defEsp}</p>
       <p><b>Velocidad:</b> ${pokemon.speed}</p> <br><br>`;
     parent.appendChild(cardContainer);
-  });
+  }
 }
 
 function printOne(pokemon) {
@@ -166,31 +167,45 @@ function start() {
   return a1;
 }
 
+function deleteChild() {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
 function app() {
   start(a1);
+  deleteChild();
   switch (a1) {
     case "1":
       console.log(POKEDEX);
-      printPokeList(POKEDEX.lista);
+      printPokeList(POKEDEX.sortStatUp("numero"));
+      title.innerText = "Pokedex";
       break;
 
     case "2":
       let a2 = prompt("Qué pokemon quieres buscar?");
-      printOne(POKEDEX.findPokemon("nombre", a2));
+      let res2 = POKEDEX.findPokemon("nombre", a2);
+      printOne(res2);
       console.log(POKEDEX.findPokemon("nombre", a2));
+      title.innerText = `${res2.nombre}`;
       break;
 
     case "3":
       let a3 = prompt("Qué pokemon quieres buscar?");
-      printOne(POKEDEX.findPokemon("numero", parseInt(a3)));
+      let res3 = POKEDEX.findPokemon("numero", parseInt(a3));
+      printOne(res3);
       console.log(POKEDEX.findPokemon("numero", parseInt(a3)));
+      title.innerText = `${res3.nombre}`;
       break;
 
     case "4":
       let a4 = prompt("Escribe el tipo que quieres filtrar");
       a4 = a4.toLowerCase();
-      printPokeList(POKEDEX.filterByType(a4));
+      let res4 = POKEDEX.filterByType(a4);
+      printPokeList(res4);
       console.log(POKEDEX.filterByType(a4));
+      title.innerText = `Pokemon's tipo ${a4.toLowerCase()}`;
       break;
 
     case "5":
@@ -204,34 +219,40 @@ function app() {
       (Escribe el número)`);
 
       switch (a5) {
-        case "1" || "ps":
+        case "1":
           printPokeList(POKEDEX.sortStatDown("ps"));
           console.log(POKEDEX.sortStatDown("ps"));
+          title.innerText = "Pokemon's ordenados por PS";
           break;
 
         case "2":
           printPokeList(POKEDEX.sortStatDown("atq"));
           console.log(POKEDEX.sortStatDown("atq"));
+          title.innerText = "Pokemon's ordenados por Ataque";
           break;
 
         case "3":
           printPokeList(POKEDEX.sortStatDown("def"));
           console.log(POKEDEX.sortStatDown("def"));
+          title.innerText = "Pokemon's ordenados por Defensa";
           break;
 
         case "4":
           printPokeList(POKEDEX.sortStatDown("atqEsp"));
           console.log(POKEDEX.sortStatDown("atqEsp"));
+          title.innerText = "Pokemon's ordenados por Ataque Especual";
           break;
 
         case "5":
           printPokeList(POKEDEX.sortStatDown("defEsp"));
           console.log(POKEDEX.sortStatDown("defEsp"));
+          title.innerText = "Pokemon's ordenados por Defensa Especial";
           break;
 
         case "6":
           printPokeList(POKEDEX.sortStatDown("speed"));
           console.log(POKEDEX.sortStatDown("speed"));
+          title.innerText = "Pokemon's ordenados por Velocidad";
           break;
 
         case null:
