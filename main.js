@@ -116,55 +116,172 @@ POKEDEX.pushPokemon(new Pokemon("mewtwo", 150, "psiquico", "", "kanto", 106, 110
 POKEDEX.pushPokemon(new Pokemon("mew", 151, "psiquico", "", "kanto", 100, 100, 100, 100, 100, 100));
 
 ////////////////////////////////////////////////
-//DECLARACIÓN FUNCIONES PARA FUNCIONAMIENTO APP
+//CAPTURA ELEMENTOS DEL DOM
 ////////////////////////////////////////////////
 
-let a1;
-let cardContainer = document.createElement("div");
+const formulario = document.getElementById("formulario");
+
+//container de inputs de sección NOMBRE
+const nameParent = document.getElementById("inputTextName-container");
+
+//container de inputs de sección NUMERO
+const numParent = document.getElementById("inputNumberNum-container");
+
+//container de inputs de sección TIPO
+const typeParent = document.getElementById("typeCheckbox-container");
+
+//container de inputs de sección STAT + RANGE
+const statParent = document.getElementById("radioStat-container");
+const rangeContainer = document.getElementById("rangeContainer");
+const minRange = document.getElementById("minRange");
+const maxRange = document.getElementById("maxRange");
+
+//elementos para print
 const parent = document.getElementById("parent");
-const button = document.getElementById("button");
-button.addEventListener("click", app);
 const title = document.getElementById("titulo");
+
+//variable para la función checkPrint
+let cardSm;
+
+////////////////////////////////////////////////
+// EVENTOS
+////////////////////////////////////////////////
+
+//evento FORMULARIO
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+formulario.addEventListener("click", (e) => {
+  if (e.target && e.target.tagName === "A") {
+    e.target.nextElementSibling.classList.toggle("desplegado");
+  }
+});
+
+//evento sección NOMBRE
+nameParent.addEventListener("input", (e) => {
+  if (e.target && (e.target.tagName === "DATALIST" || e.target.tagName === "INPUT")) {
+    let value = e.target.value;
+    console.log(e.target.value);
+    let res = POKEDEX.findPokemon("nombre", value);
+    printOne(res);
+    checkPrint(cardSm, res);
+  }
+});
+
+//evento sección NÚMERO
+numParent.addEventListener("input", (e) => {
+  if (e.target && e.target.tagName === "INPUT") {
+    let value = Number(e.target.value);
+    console.log(e.target.value);
+    let res = POKEDEX.findPokemon("numero", value);
+    printOne(res);
+    checkPrint(cardSm, res);
+  }
+});
+
+//evento sección TIPO
+typeParent.addEventListener("change", (e) => {
+  console.log(e.target);
+  if (e.target && e.target.checked && (e.target.tagName === "INPUT" || e.target.tagName === "LABEL")) {
+    let value = e.target.value;
+    let res = POKEDEX.filterByType(value);
+    console.log(res);
+    console.log(e.target.value);
+    printPokeList(res);
+  } else if (e.target.checked === false) {
+    deleteChild();
+  }
+});
+
+//evento sección STAT ++ RANGE
+let radioStatValue = statParent.childNodes.forEach((elemento) => {
+  elemento.addEventListener("click", (e) => {
+    console.log(e.target.value);
+    rangeContainer.classList.add("desplegado");
+    radioStatValue = e.target.value;
+  });
+});
+
+rangeContainer.addEventListener("input", (e) => {
+  if (e.target && e.target.tagName === "INPUT") {
+    e.target.value;
+    let value1 = minRange.value;
+    let value2 = maxRange.value;
+    deleteChild();
+    let res = POKEDEX.sortStatRangeWithValue(radioStatValue, "menor", value1, value2);
+    printPokeList(res);
+  }
+});
+
+////////////////////////////////////////////////
+// DECLARACIÓN FUNCIONES PARA EL DOM
+////////////////////////////////////////////////
+
+function checkPrint(cardSm, res) {
+  if (cardSm) {
+    deleteChild();
+    printOne(res);
+  } else {
+    printOne(res);
+  }
+}
+
+function printBgCard(pokemon, card) {
+  if (pokemon.tipo1 === "fuego") {
+    card.classList.add("bg-fuego");
+  } else if (pokemon.tipo1 === "planta") {
+    card.classList.add("bg-planta");
+  } else if (pokemon.tipo1 === "agua") {
+    card.classList.add("bg-agua");
+  } else if (pokemon.tipo1 === "electrico") {
+    card.classList.add("bg-electrico");
+  } else if (pokemon.tipo1 === "lucha") {
+    card.classList.add("bg-lucha");
+  } else if (pokemon.tipo1 === "psiquico") {
+    card.classList.add("bg-psiquico");
+  } else {
+    card.classList.add("bg-notColor");
+  }
+}
 
 function printPokeList(pokemons) {
   for (let pokemon of pokemons) {
-    let cardContainer = document.createElement("div");
-    cardContainer.innerHTML = `<p><b>Nombre:</b> ${pokemon.nombre}</p>
-      <p><b>Número:</b> ${pokemon.numero}</p>
-      <p><b>tipo:</b> ${pokemon.tipo1} ${pokemon.tipo2}</p>
-      <p><b>Región:</b> ${pokemon.region}</p>
-      <p><b>PS:</b> ${pokemon.ps}</p>
-      <p><b>Ataque:</b> ${pokemon.atq}</p>
-      <p><b>Defensa:</b> ${pokemon.def}</p>
-      <p><b>Ataque especial:</b> ${pokemon.atqEsp}</p>
-      <p><b>Defensa especial:</b> ${pokemon.defEsp}</p>
-      <p><b>Velocidad:</b> ${pokemon.speed}</p> <br><br>`;
-    parent.appendChild(cardContainer);
+    let cardSm = document.createElement("div");
+    cardSm.classList.add("card-sm");
+    cardSm.innerHTML = `
+    <div class="card-info">
+      <h2 class="card-title">${pokemon.nombre}</h2>
+      <p class="card-txt">${pokemon.tipo1}</p>
+      <p class="card-txt">${pokemon.tipo2}</p>
+    </div>
+    <div class="card-img">
+      <img src="./assets/img/charizard.png" alt="" class="img">
+    </div>
+    <img src="./assets/img/pokeball.png" alt="" class="card-pkball">
+`;
+    parent.appendChild(cardSm);
+    printBgCard(pokemon, cardSm);
   }
 }
 
 function printOne(pokemon) {
-  cardContainer.innerHTML = `<p><b>Nombre:</b> ${pokemon.nombre}</p>
-        <p><b>Número:</b> ${pokemon.numero}</p>
-        <p><b>tipo:</b> ${pokemon.tipo1} ${pokemon.tipo2}</p>
-        <p><b>Región:</b> ${pokemon.region}</p>
-        <p><b>PS:</b> ${pokemon.ps}</p>
-        <p><b>Ataque:</b> ${pokemon.atq}</p>
-        <p><b>Defensa:</b> ${pokemon.def}</p>
-        <p><b>Ataque especial:</b> ${pokemon.atqEsp}</p>
-        <p><b>Defensa especial:</b> ${pokemon.defEsp}</p>
-        <p><b>Velocidad:</b> ${pokemon.speed}</p> <br><br>`;
-  parent.append(cardContainer);
-}
-function start() {
-  a1 = prompt(`¿Qué quieres hacer?\n
-  1- Mostrar los pokemon disponibles
-  2- Buscar por nombre
-  3- Buscar por número
-  4- Filtrar por tipo
-  5- Ordenarlos por estadística. \n
-  (Escribe el número de lo que quieras hacer)`);
-  return a1;
+  cardSm = document.createElement("div");
+  cardSm.classList.add("card-sm");
+  cardSm.innerHTML = `
+  <div class="card-info">
+    <h2 class="card-title">${pokemon.nombre}</h2>
+    <p class="card-txt">${pokemon.tipo1}</p>
+    <p class="card-txt">${pokemon.tipo2}</p>
+  </div>
+  <div class="card-img">
+    <img src="./assets/img/charizard.png" alt="" class="img">
+  </div>
+  <img src="./assets/img/pokeball.png" alt="" class="card-pkball">
+`;
+  parent.appendChild(cardSm);
+  printBgCard(pokemon, cardSm);
+  cardSm === true;
 }
 
 function deleteChild() {
@@ -172,102 +289,3 @@ function deleteChild() {
     parent.removeChild(parent.firstChild);
   }
 }
-
-function app() {
-  start(a1);
-  deleteChild();
-  switch (a1) {
-    case "1":
-      console.log(POKEDEX);
-      printPokeList(POKEDEX.sortStatUp("numero"));
-      title.innerText = "Pokedex";
-      break;
-
-    case "2":
-      let a2 = prompt("Qué pokemon quieres buscar?");
-      let res2 = POKEDEX.findPokemon("nombre", a2);
-      printOne(res2);
-      console.log(POKEDEX.findPokemon("nombre", a2));
-      title.innerText = `${res2.nombre}`;
-      break;
-
-    case "3":
-      let a3 = prompt("Qué pokemon quieres buscar?");
-      let res3 = POKEDEX.findPokemon("numero", parseInt(a3));
-      printOne(res3);
-      console.log(POKEDEX.findPokemon("numero", parseInt(a3)));
-      title.innerText = `${res3.nombre}`;
-      break;
-
-    case "4":
-      let a4 = prompt("Escribe el tipo que quieres filtrar");
-      a4 = a4.toLowerCase();
-      let res4 = POKEDEX.filterByType(a4);
-      printPokeList(res4);
-      console.log(POKEDEX.filterByType(a4));
-      title.innerText = `Pokemon's tipo ${a4.toLowerCase()}`;
-      break;
-
-    case "5":
-      let a5 = prompt(`Por qué estadística quieres filtrar?\n
-      1- PS
-      2- ATAQUE
-      3- DEFENSA
-      4- ATAQUE ESPECIAL
-      5- DEFENSA ESPECIAL
-      6- VELOCIDAD
-      (Escribe el número)`);
-
-      switch (a5) {
-        case "1":
-          printPokeList(POKEDEX.sortStatDown("ps"));
-          console.log(POKEDEX.sortStatDown("ps"));
-          title.innerText = "Pokemon's ordenados por PS";
-          break;
-
-        case "2":
-          printPokeList(POKEDEX.sortStatDown("atq"));
-          console.log(POKEDEX.sortStatDown("atq"));
-          title.innerText = "Pokemon's ordenados por Ataque";
-          break;
-
-        case "3":
-          printPokeList(POKEDEX.sortStatDown("def"));
-          console.log(POKEDEX.sortStatDown("def"));
-          title.innerText = "Pokemon's ordenados por Defensa";
-          break;
-
-        case "4":
-          printPokeList(POKEDEX.sortStatDown("atqEsp"));
-          console.log(POKEDEX.sortStatDown("atqEsp"));
-          title.innerText = "Pokemon's ordenados por Ataque Especual";
-          break;
-
-        case "5":
-          printPokeList(POKEDEX.sortStatDown("defEsp"));
-          console.log(POKEDEX.sortStatDown("defEsp"));
-          title.innerText = "Pokemon's ordenados por Defensa Especial";
-          break;
-
-        case "6":
-          printPokeList(POKEDEX.sortStatDown("speed"));
-          console.log(POKEDEX.sortStatDown("speed"));
-          title.innerText = "Pokemon's ordenados por Velocidad";
-          break;
-
-        case null:
-          alert("Gracias por usar la mini pokedex");
-      }
-      break;
-
-    case null:
-      alert("Gracias por usar la mini pokedex");
-  }
-}
-
-////////////////////////////////////////////////
-//EJECUCIÓN APP
-////////////////////////////////////////////////
-
-alert("Hola, esta es una mini pokedex");
-app();

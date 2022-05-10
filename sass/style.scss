@@ -1,0 +1,132 @@
+$colorFuego: #fb6d6c;
+$colorPlanta: #4dcdac;
+$colorAgua: #5ba8f0;
+$colorElectrico: #fdd96b;
+$colorLucha: #b17368;
+$colorPsiquico: #784c8b;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label,
+input {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+.desplegado {
+  margin-left: 4px;
+  margin-right: 4px;
+  max-width: 90vw;
+  display: flex;
+}
+
+////////////////////////////////////////////////
+// CARD PEQUEÑA
+////////////////////////////////////////////////
+
+#parent {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 12px;
+}
+
+.card {
+  &-sm {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 85%;
+    height: 200px;
+    min-width: 272px;
+    max-width: 310px;
+    border-radius: 30px;
+    z-index: 1;
+    overflow: hidden;
+  }
+  &-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 20px;
+    width: 40%;
+    z-index: 3;
+  }
+  &-title {
+    margin-bottom: 4px;
+    color: whitesmoke;
+    font-weight: 400;
+    z-index: 5;
+  }
+  &-txt {
+    width: 100%;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 5px;
+    color: whitesmoke;
+    text-align: center;
+    background-color: rgba(254, 254, 254, 0.2);
+    border-radius: 13px;
+    z-index: 3;
+  }
+  &-img {
+    width: 60%;
+    height: 100%;
+    z-index: 2;
+    .img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      z-index: 3;
+    }
+  }
+  &-pkball {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    width: 50%;
+    opacity: 0.2;
+    transform: rotate(-45deg);
+    z-index: 1;
+  }
+}
+
+.bg {
+  &-fuego {
+    background-color: $colorFuego;
+  }
+  &-planta {
+    background-color: $colorPlanta;
+  }
+  &-agua {
+    background-color: $colorAgua;
+  }
+  &-electrico {
+    background-color: $colorElectrico;
+  }
+  &-lucha {
+    background-color: $colorLucha;
+  }
+  &-psiquico {
+    background-color: $colorPsiquico;
+  }
+  &-notColor {
+    background-color: black;
+  }
+}
