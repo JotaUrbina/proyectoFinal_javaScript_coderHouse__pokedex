@@ -153,7 +153,7 @@ formulario.addEventListener("submit", (e) => {
 });
 
 formulario.addEventListener("click", (e) => {
-  if (e.target && e.target.tagName === "A") {
+  if (e.target && e.target.tagName === "BUTTON") {
     e.target.nextElementSibling.classList.toggle("desplegado");
   }
 });

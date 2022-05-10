@@ -19,8 +19,9 @@ form {
   flex-direction: column;
 }
 
-a {
-  margin: 4px;
+button {
+  margin: 8px;
+  width: 200px;
   &:hover {
     cursor: pointer;
   }
