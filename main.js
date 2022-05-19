@@ -29,8 +29,8 @@ class Pokedex {
     return this.lista.find((pokemon) => pokemon[property] === value);
   }
 
-  filterByType(type) {
-    return this.lista.filter((pokemon) => pokemon.tipo1 === type || pokemon.tipo2 === type);
+  filterByType(types) {
+    return this.lista.filter((pokemon) => types.includes(pokemon.tipo1) || types.includes(pokemon.tipo2));
   }
 
   sortStatUp(property) {
@@ -137,94 +137,75 @@ const minRange = document.getElementById("minRange");
 const maxRange = document.getElementById("maxRange");
 
 //elementos para print
-const parent = document.getElementById("parent");
-const title = document.getElementById("titulo");
+const cardsParent = document.getElementById("cards-parent");
+const templateCardTop = document.querySelector(".cardTop-template").content;
+const templateCardBottom = document.querySelector(".cardBottom-template").content;
+const fragment = document.createDocumentFragment();
 
-//variable para la función checkPrint
-let cardSm;
-
-////////////////////////////////////////////////
-// EVENTOS
-////////////////////////////////////////////////
-
-//evento FORMULARIO
-formulario.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
-
-formulario.addEventListener("click", (e) => {
-  if (e.target && e.target.tagName === "BUTTON") {
-    e.target.nextElementSibling.classList.toggle("desplegado");
-  }
-});
-
-//evento sección NOMBRE
-nameParent.addEventListener("input", (e) => {
-  if (e.target && (e.target.tagName === "DATALIST" || e.target.tagName === "INPUT")) {
-    let value = e.target.value;
-    console.log(e.target.value);
-    let res = POKEDEX.findPokemon("nombre", value);
-    printOne(res);
-    checkPrint(cardSm, res);
-  }
-});
-
-//evento sección NÚMERO
-numParent.addEventListener("input", (e) => {
-  if (e.target && e.target.tagName === "INPUT") {
-    let value = Number(e.target.value);
-    console.log(e.target.value);
-    let res = POKEDEX.findPokemon("numero", value);
-    printOne(res);
-    checkPrint(cardSm, res);
-  }
-});
-
-//evento sección TIPO
-typeParent.addEventListener("change", (e) => {
-  console.log(e.target);
-  if (e.target && e.target.checked && (e.target.tagName === "INPUT" || e.target.tagName === "LABEL")) {
-    let value = e.target.value;
-    let res = POKEDEX.filterByType(value);
-    console.log(res);
-    console.log(e.target.value);
-    printPokeList(res);
-  } else if (e.target.checked === false) {
-    deleteChild();
-  }
-});
-
-//evento sección STAT ++ RANGE
-let radioStatValue = statParent.childNodes.forEach((elemento) => {
-  elemento.addEventListener("click", (e) => {
-    console.log(e.target.value);
-    rangeContainer.classList.add("desplegado");
-    radioStatValue = e.target.value;
-  });
-});
-
-rangeContainer.addEventListener("input", (e) => {
-  if (e.target && e.target.tagName === "INPUT") {
-    e.target.value;
-    let value1 = minRange.value;
-    let value2 = maxRange.value;
-    deleteChild();
-    let res = POKEDEX.sortStatRangeWithValue(radioStatValue, "menor", value1, value2);
-    printPokeList(res);
-  }
-});
+//local storage
+let favoritePkmn = JSON.parse(localStorage.getItem("favoritos")) || [];
 
 ////////////////////////////////////////////////
 // DECLARACIÓN FUNCIONES PARA EL DOM
 ////////////////////////////////////////////////
 
-function checkPrint(cardSm, res) {
-  if (cardSm) {
-    deleteChild();
-    printOne(res);
-  } else {
-    printOne(res);
+function getCardElements(pokemon) {
+  templateCardTop.querySelector(".card-title").textContent = pokemon.nombre;
+  templateCardTop.querySelector(".card-txt-1").textContent = pokemon.tipo1;
+  templateCardTop.querySelector(".card-txt-2").textContent = pokemon.tipo2;
+  templateCardBottom.querySelector(".stat-ps").textContent = pokemon.ps;
+  templateCardBottom.querySelector(".stat-speed").textContent = pokemon.speed;
+  templateCardBottom.querySelector(".stat-atq").textContent = pokemon.atq;
+  templateCardBottom.querySelector(".stat-def").textContent = pokemon.def;
+  templateCardBottom.querySelector(".stat-atqEsp").textContent = pokemon.atqEsp;
+  templateCardBottom.querySelector(".stat-defEsp").textContent = pokemon.defEsp;
+}
+
+function printPkmnList(pokemons) {
+  cardsParent.innerHTML = "";
+  pokemons.forEach((pokemon) => {
+    getCardElements(pokemon);
+    const cloneTop = templateCardTop.cloneNode(true);
+    const cloneBottom = templateCardBottom.cloneNode(true);
+    validateTipo2(pokemon, cloneTop);
+    printBgCard(pokemon, cloneTop.firstElementChild);
+    addAttributeCheckbox(cloneTop);
+    cloneTop.querySelector(".heart-checkbox").setAttribute("name", pokemon.nombre);
+    //
+    let heart = cloneTop.querySelector(".fa-heart");
+    let checkHeart = cloneTop.querySelector(".heart-checkbox");
+    let pokeCheck = favoritePkmn.filter((pokeFil) => pokeFil.nombre === pokemon.nombre)[0];
+    if (pokeCheck) {
+      checkHeart.setAttribute("checked", "");
+      checkHeart.setAttribute("data-check", "fa-solid");
+      heart.classList.add(checkHeart.getAttribute("data-check"));
+    }
+    //
+    fragment.append(cloneTop, cloneBottom);
+  });
+  cardsParent.appendChild(fragment);
+}
+
+function printPkmn(pokemon) {
+  cardsParent.innerHTML = "";
+  getCardElements(pokemon);
+  const cloneTop = templateCardTop.cloneNode(true);
+  const cloneBottom = templateCardBottom.cloneNode(true);
+  validateTipo2(pokemon, cloneTop);
+  printBgCard(pokemon, cloneTop.firstElementChild);
+  addAttributeCheckbox(cloneTop);
+  fragment.append(cloneTop, cloneBottom);
+  //
+  let heart = cloneTop.querySelector(".fa-heart");
+  let checkHeart = cloneTop.querySelector(".heart-checkbox");
+  let pokeCheck = favoritePkmn.filter((pokeFil) => pokeFil.nombre === pokemon.nombre)[0];
+  if (pokeCheck) {
+    checkHeart.setAttribute("checked", "");
+    checkHeart.setAttribute("data-check", "fa-solid");
+    heart.classList.add(checkHeart.getAttribute("data-check"));
   }
+  //
+  cardsParent.appendChild(fragment);
 }
 
 function printBgCard(pokemon, card) {
@@ -245,47 +226,144 @@ function printBgCard(pokemon, card) {
   }
 }
 
-function printPokeList(pokemons) {
-  for (let pokemon of pokemons) {
-    let cardSm = document.createElement("div");
-    cardSm.classList.add("card-sm");
-    cardSm.innerHTML = `
-    <div class="card-info">
-      <h2 class="card-title">${pokemon.nombre}</h2>
-      <p class="card-txt">${pokemon.tipo1}</p>
-      <p class="card-txt">${pokemon.tipo2}</p>
-    </div>
-    <div class="card-img">
-      <img src="./assets/img/charizard.png" alt="" class="img">
-    </div>
-    <img src="./assets/img/pokeball.png" alt="" class="card-pkball">
-`;
-    parent.appendChild(cardSm);
-    printBgCard(pokemon, cardSm);
+function validateTipo2(pokemon, cloneTop) {
+  if (pokemon.tipo2.length === 0) {
+    cloneTop.querySelector(".card-txt-2").classList.add("hidden");
   }
 }
 
-function printOne(pokemon) {
-  cardSm = document.createElement("div");
-  cardSm.classList.add("card-sm");
-  cardSm.innerHTML = `
-  <div class="card-info">
-    <h2 class="card-title">${pokemon.nombre}</h2>
-    <p class="card-txt">${pokemon.tipo1}</p>
-    <p class="card-txt">${pokemon.tipo2}</p>
-  </div>
-  <div class="card-img">
-    <img src="./assets/img/charizard.png" alt="" class="img">
-  </div>
-  <img src="./assets/img/pokeball.png" alt="" class="card-pkball">
-`;
-  parent.appendChild(cardSm);
-  printBgCard(pokemon, cardSm);
-  cardSm === true;
+function addAttributeCheckbox(cloneTop) {
+  cloneTop.querySelector(".heart-checkbox").setAttribute("data-check", "fa-regular");
+  cloneTop
+    .querySelector(".fa-heart")
+    .classList.add(cloneTop.querySelector(".heart-checkbox").getAttribute("data-check"));
+  cloneTop.querySelector(".fa-heart").classList.add(localStorage.getItem("check"));
 }
 
-function deleteChild() {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
+////////////////////////////////////////////////
+// DECLARACIÓN FUNCIONES PARA LOCAL STORAGE
+////////////////////////////////////////////////
+
+function addLocalStorage(namePkmn) {
+  let objPkmn = POKEDEX.findPokemon("nombre", namePkmn);
+  let objPkmnFav = favoritePkmn.filter((pokemon) => pokemon.nombre === namePkmn)[0];
+  if (favoritePkmn.length) {
+    if (!objPkmnFav) {
+      favoritePkmn.push(objPkmn);
+    }
+  } else {
+    favoritePkmn.push(objPkmn);
   }
+  favoritePkmnString = JSON.stringify(favoritePkmn);
+  localStorage.setItem("favoritos", favoritePkmnString);
 }
+
+function deleteLocalStorage(namePkmn) {
+  let objPkmnFav = favoritePkmn.filter((pokemon) => pokemon.nombre === namePkmn)[0];
+  let index = favoritePkmn.indexOf(objPkmnFav);
+  favoritePkmn.splice(index, 1);
+  favoritePkmnString = JSON.stringify(favoritePkmn);
+  localStorage.setItem("favoritos", favoritePkmnString);
+}
+
+////////////////////////////////////////////////
+// EVENTOS
+////////////////////////////////////////////////
+
+//evento FORMULARIO
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+formulario.addEventListener("click", (e) => {
+  if (e.target && e.target.tagName === "BUTTON" && e.target != formulario.querySelector("#favorite")) {
+    e.target.nextElementSibling.classList.toggle("desplegado");
+  }
+});
+
+//evento sección NOMBRE
+nameParent.addEventListener("input", (e) => {
+  if (e.target && (e.target.tagName === "DATALIST" || e.target.tagName === "INPUT")) {
+    let value = e.target.value;
+    let res = POKEDEX.findPokemon("nombre", value);
+    printPkmn(res);
+  }
+});
+
+//evento sección NÚMERO
+numParent.addEventListener("input", (e) => {
+  if (e.target && e.target.tagName === "INPUT") {
+    let value = Number(e.target.value);
+    let res = POKEDEX.findPokemon("numero", value);
+    printPkmn(res);
+  }
+});
+
+//evento sección TIPO
+typeParent.addEventListener("change", () => {
+  let res = POKEDEX.filterByType(getChecked());
+  printPkmnList(res);
+});
+
+function getChecked() {
+  let checkedValue = [];
+  let inputElements = document.querySelectorAll("#typeCheckbox-container input");
+  for (var i = 0; inputElements[i]; ++i) {
+    if (inputElements[i].checked) {
+      checkedValue.push(inputElements[i].value);
+    }
+  }
+  return checkedValue;
+}
+
+//evento sección STAT ++ RANGE
+let radioStatValue = statParent.childNodes.forEach((elemento) => {
+  elemento.addEventListener("click", (e) => {
+    rangeContainer.classList.add("desplegado");
+    radioStatValue = e.target.value;
+  });
+});
+
+rangeContainer.addEventListener("input", (e) => {
+  if (e.target && e.target.tagName === "INPUT") {
+    e.target.value;
+    let value1 = minRange.value;
+    let value2 = maxRange.value;
+    let res = POKEDEX.sortStatRangeWithValue(radioStatValue, "menor", value1, value2);
+    printPkmnList(res);
+  }
+});
+
+// evento MIS FAVORITOS
+formulario.addEventListener("click", (e) => {
+  if (e.target === formulario.querySelector("#favorite")) {
+    printPkmnList(favoritePkmn);
+  }
+});
+
+// evento DEPLOY STAT
+cardsParent.addEventListener("click", (e) => {
+  if (e.target.nodeName === "BUTTON") {
+    e.target.parentElement.nextElementSibling.classList.toggle("card-stat__desplegado");
+  }
+});
+
+// evento CHECKBOX-CORAZÓN de las cards renderizadas
+cardsParent.addEventListener("change", (e) => {
+  if (e.target.nodeName === "INPUT") {
+    let heart = e.target.previousElementSibling;
+    let namePkmn = e.target.parentElement.nextElementSibling.textContent;
+
+    if (e.target.checked) {
+      addLocalStorage(namePkmn);
+      heart.classList.remove(e.target.getAttribute("data-check"));
+      e.target.setAttribute("data-check", "fa-solid");
+      heart.classList.add(e.target.getAttribute("data-check"));
+    } else if (e.target.checked === false) {
+      deleteLocalStorage(namePkmn);
+      heart.classList.remove(e.target.getAttribute("data-check"));
+      e.target.setAttribute("data-check", "fa-regular");
+      heart.classList.add(e.target.getAttribute("data-check"));
+    }
+  }
+});

@@ -17,6 +17,7 @@ html {
 form {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 button {
@@ -31,21 +32,72 @@ input {
   display: block;
 }
 
+#typeCheckbox-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 4px;
+  margin: 0 auto;
+  width: 95%;
+  max-width: 670px;
+}
+
+.checkbox {
+  width: 85px;
+  display: flex;
+  justify-content: space-evenly;
+  label {
+    width: 80px;
+  }
+  input {
+    align-self: center;
+  }
+}
+
+#radioStat-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+  gap: 4px;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 670px;
+}
+
+.statInput {
+  width: 85px;
+  display: flex;
+  justify-content: space-evenly;
+  label {
+    width: 80px;
+  }
+  input {
+    align-self: center;
+  }
+}
+
 .hidden {
-  display: none;
+  height: 0px;
+  z-index: 0;
+  visibility: hidden;
+  transform: translateY(-30px);
+  opacity: 0;
+  transition: transform 0.05s linear;
 }
 .desplegado {
-  margin-left: 4px;
-  margin-right: 4px;
-  max-width: 90vw;
-  display: flex;
+  height: auto;
+  visibility: visible;
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 0.05s linear;
 }
 
 ////////////////////////////////////////////////
 // CARD PEQUEÑA
 ////////////////////////////////////////////////
 
-#parent {
+#cards-parent {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -54,17 +106,29 @@ input {
 }
 
 .card {
-  &-sm {
+  &-top-container {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    width: 85%;
+    width: 310;
     height: 200px;
     min-width: 272px;
     max-width: 310px;
     border-radius: 30px;
     z-index: 1;
     overflow: hidden;
+  }
+  &-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    color: whitesmoke;
+    font-size: 22px;
+    cursor: pointer;
   }
   &-info {
     display: flex;
@@ -81,7 +145,8 @@ input {
     font-weight: 400;
     z-index: 5;
   }
-  &-txt {
+  &-txt-1,
+  &-txt-2 {
     width: 100%;
     margin-top: 4px;
     margin-bottom: 4px;
@@ -112,6 +177,43 @@ input {
     transform: rotate(-45deg);
     z-index: 1;
   }
+  &-btn {
+    position: absolute;
+    bottom: 0px;
+    left: calc(50% - 25px);
+    margin: 0;
+    padding: 8px;
+    width: 50px;
+    font-size: 16px;
+    color: whitesmoke;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 3;
+  }
+  &-stat-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding-top: 38px;
+    padding-bottom: 8px;
+    width: 310px;
+    text-align: center;
+    grid-gap: 8px;
+    height: 0;
+    //background-color: #4dcdac;
+    visibility: hidden;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: transform 0.1s linear;
+  }
+  &-stat__desplegado {
+    height: auto;
+    visibility: visible;
+    transform: translateY(-30px);
+    opacity: 1;
+    transition: transform 0.1s linear;
+  }
 }
 
 .bg {
@@ -137,3 +239,13 @@ input {
     background-color: black;
   }
 }
+
+.heart {
+  &-checkbox {
+    position: absolute;
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+///
