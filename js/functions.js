@@ -15,12 +15,12 @@ const getCardElements = (pokemon) => {
   templateCardTop.querySelector(".card-title").textContent = pokemon.nombre;
   templateCardTop.querySelector(".card-txt-1").textContent = pokemon.tipo1;
   templateCardTop.querySelector(".card-txt-2").textContent = pokemon.tipo2;
-  templateCardBottom.querySelector(".stat-ps").textContent = pokemon.ps;
-  templateCardBottom.querySelector(".stat-speed").textContent = pokemon.speed;
-  templateCardBottom.querySelector(".stat-atq").textContent = pokemon.atq;
-  templateCardBottom.querySelector(".stat-def").textContent = pokemon.def;
-  templateCardBottom.querySelector(".stat-atqEsp").textContent = pokemon.atqEsp;
-  templateCardBottom.querySelector(".stat-defEsp").textContent = pokemon.defEsp;
+  templateCardTop.querySelector(".stat-ps").textContent = pokemon.ps;
+  templateCardTop.querySelector(".stat-speed").textContent = pokemon.speed;
+  templateCardTop.querySelector(".stat-atq").textContent = pokemon.atq;
+  templateCardTop.querySelector(".stat-def").textContent = pokemon.def;
+  templateCardTop.querySelector(".stat-atqEsp").textContent = pokemon.atqEsp;
+  templateCardTop.querySelector(".stat-defEsp").textContent = pokemon.defEsp;
 };
 
 const printPkmnList = (pokemons) => {
@@ -28,12 +28,11 @@ const printPkmnList = (pokemons) => {
   pokemons.forEach((pokemon) => {
     getCardElements(pokemon);
     const cloneTop = templateCardTop.cloneNode(true);
-    const cloneBottom = templateCardBottom.cloneNode(true);
     validateTipo2(pokemon, cloneTop);
     printBgCard(pokemon, cloneTop.firstElementChild);
     addRegularHeartToCards(cloneTop);
     addSolidHeartCardsInLS(cloneTop, pokemon);
-    fragment.append(cloneTop, cloneBottom);
+    fragment.append(cloneTop);
   });
   cardsParent.appendChild(fragment);
 };
@@ -42,12 +41,11 @@ const printPkmn = (pokemon) => {
   cardsParent.innerHTML = "";
   getCardElements(pokemon);
   const cloneTop = templateCardTop.cloneNode(true);
-  const cloneBottom = templateCardBottom.cloneNode(true);
   validateTipo2(pokemon, cloneTop);
   printBgCard(pokemon, cloneTop.firstElementChild);
   addRegularHeartToCards(cloneTop);
   addSolidHeartCardsInLS(cloneTop, pokemon);
-  fragment.append(cloneTop, cloneBottom);
+  fragment.append(cloneTop);
   cardsParent.appendChild(fragment);
 };
 

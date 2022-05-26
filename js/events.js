@@ -10,8 +10,10 @@ formulario.addEventListener("submit", (e) => {
 formulario.addEventListener("click", (e) => {
   let inputContainer = e.target.nextElementSibling;
   if (e.target.tagName === "BUTTON" && e.target != formulario.querySelector("#favorite")) {
-    inputContainer.classList.toggle("desplegado");
+    isActive = !isActive;
+    deployInput(inputContainer);
   }
+  e.target === document.querySelector(".statBtn") && deployInput(rangeContainer);
 });
 
 //evento sección NOMBRE
@@ -43,7 +45,6 @@ typeParent.addEventListener("change", () => {
 //evento sección STAT ++ RANGE
 let radioStatValue = statParent.childNodes.forEach((elemento) => {
   elemento.addEventListener("click", (e) => {
-    rangeContainer.classList.add("desplegado");
     radioStatValue = e.target.value;
   });
 });
@@ -64,7 +65,16 @@ formulario.addEventListener("click", (e) => {
 // evento DEPLOY STAT
 cardsParent.addEventListener("click", (e) => {
   let cardStat = e.target.parentElement.nextElementSibling;
-  e.target.nodeName === "BUTTON" && cardStat.classList.toggle("card-stat__desplegado");
+  if (e.target.nodeName === "BUTTON") {
+    isActive = !isActive;
+    deployCardStat(cardStat);
+  }
+});
+
+// evento HOVER
+cardsParent.addEventListener("mouseover", (e) => {
+  let cardArrow = e.target;
+  e.target.nodeName === "BUTTON" && mouseOver(cardArrow);
 });
 
 // evento CHECKBOX-CORAZÓN de las cards renderizadas

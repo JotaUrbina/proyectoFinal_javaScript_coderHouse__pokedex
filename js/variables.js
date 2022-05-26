@@ -22,7 +22,6 @@ const maxRange = document.getElementById("maxRange");
 //elementos para print
 const cardsParent = document.getElementById("cards-parent");
 const templateCardTop = document.querySelector(".cardTop-template").content;
-const templateCardBottom = document.querySelector(".cardBottom-template").content;
 const fragment = document.createDocumentFragment();
 
 //local storage

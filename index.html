@@ -177,7 +177,7 @@
 
         <!-- STAT-->
 
-        <button>Stat</button>
+        <button class="statBtn">Stat</button>
 
         <div id="radioStat-container" class="hidden">
             <div class="statInput">
@@ -225,60 +225,67 @@
     <section id="cards-parent"></section>
 
     <template class="cardTop-template">
-        <div class="card-top-container">
-            <!--CLONETOP-->
-            <div class="card-info">
-                <div class="card-icon">
-                    <i class="fa-heart"></i>
-                    <input type="checkbox" name="" class="heart-checkbox">
+        <div class="card">
+            <div class="card-top-container">
+                <!--CLONETOP-->
+                <div class="card-info">
+                    <div class="card-icon">
+                        <i class="fa-heart"></i>
+                        <input type="checkbox" name="" class="heart-checkbox">
+                    </div>
+                    <h2 class="card-title">Charizard</h2>
+                    <p class="card-txt-1">Fuego</p>
+                    <p class="card-txt-2">Volador</p>
                 </div>
-                <h2 class="card-title">Charizard</h2>
-                <p class="card-txt-1">Fuego</p>
-                <p class="card-txt-2">Volador</p>
+                <div class="card-img">
+                    <img src="./assets/img/charizard.png" alt="" class="img">
+                </div>
+                <img src="./assets/img/pokeball.png" alt="" class="card-pkball">
+                <button class="card-btn fa-solid fa-angle-down">
+                </button>
             </div>
-            <div class="card-img">
-                <img src="./assets/img/charizard.png" alt="" class="img">
-            </div>
-            <img src="./assets/img/pokeball.png" alt="" class="card-pkball">
-            <button class="card-btn fa-solid fa-angle-down">
-            </button>
-        </div>
-    </template>
-
-    <template class="cardBottom-template">
-        <div class="card-stat-container">
-            <div>
-                <p class="stat-title">HP</p>
-                <p class="stat-ps">${pokemon.ps}</p>
-            </div>
-            <div>
-                <p class="stat-title">Velocidad</p>
-                <p class="stat-speed">${pokemon.speed}</p>
-            </div>
-            <div>
-                <p class="stat-title">Ataque</p>
-                <p class="stat-atq">${pokemon.atq}</p>
-            </div>
-            <div>
-                <p class="stat-title">Defensa</p>
-                <p class="stat-def">${pokemon.def}</p>
-            </div>
-            <div>
-                <p class="stat-title">Atq Esp</p>
-                <p class="stat-atqEsp">${pokemon.atqEsp}</p>
-            </div>
-            <div>
-                <p class="stat-title">Def Esp</p>
-                <p class="stat-defEsp">${pokemon.defEsp}</p>
+            <div class="card-stat-container">
+                <div>
+                    <p class="stat-title">HP</p>
+                    <p class="stat-ps">${pokemon.ps}</p>
+                </div>
+                <div>
+                    <p class="stat-title">Velocidad</p>
+                    <p class="stat-speed">${pokemon.speed}</p>
+                </div>
+                <div>
+                    <p class="stat-title">Ataque</p>
+                    <p class="stat-atq">${pokemon.atq}</p>
+                </div>
+                <div>
+                    <p class="stat-title">Defensa</p>
+                    <p class="stat-def">${pokemon.def}</p>
+                </div>
+                <div>
+                    <p class="stat-title">Atq Esp</p>
+                    <p class="stat-atqEsp">${pokemon.atqEsp}</p>
+                </div>
+                <div>
+                    <p class="stat-title">Def Esp</p>
+                    <p class="stat-defEsp">${pokemon.defEsp}</p>
+                </div>
             </div>
         </div>
     </template>
 
+
+
+
+    <!--GSAP-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+
+    <!--JS-->
     <script src="./js/constructorAndMethods.js"></script>
     <script src="./js/bbddPokemon.js"></script>
     <script src="./js/variables.js"></script>
     <script src="./js/functions.js"></script>
     <script src="./js/events.js"></script>
+    <script src="./js/animationGSAP.js"></script>
 
 </body>
 

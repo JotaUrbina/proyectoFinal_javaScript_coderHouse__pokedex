@@ -23,6 +23,7 @@ form {
 button {
   margin: 8px;
   width: 200px;
+  z-index: 1;
   &:hover {
     cursor: pointer;
   }
@@ -79,18 +80,8 @@ input {
 
 .hidden {
   height: 0px;
-  z-index: 0;
   visibility: hidden;
-  transform: translateY(-30px);
-  opacity: 0;
-  transition: transform 0.05s linear;
-}
-.desplegado {
-  height: auto;
-  visibility: visible;
-  transform: translateY(0);
-  opacity: 1;
-  transition: all 0.05s linear;
+  z-index: 0;
 }
 
 ////////////////////////////////////////////////
@@ -100,23 +91,27 @@ input {
 #cards-parent {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: 12px;
   padding-top: 12px;
 }
 
 .card {
+  width: 310px;
+  height: auto;
+  border-radius: 30px;
+  overflow: hidden;
   &-top-container {
-    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    width: 310;
-    height: 200px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 310px;
     min-width: 272px;
     max-width: 310px;
-    border-radius: 30px;
+    height: 200px;
     z-index: 1;
-    overflow: hidden;
   }
   &-icon {
     position: absolute;
@@ -194,25 +189,15 @@ input {
   &-stat-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    padding-top: 38px;
-    padding-bottom: 8px;
+    grid-template-rows: repeat(3, 50px);
+    place-items: center;
+    align-content: center;
     width: 310px;
     text-align: center;
     grid-gap: 8px;
-    height: 0;
-    //background-color: #4dcdac;
+    height: 0px;
     visibility: hidden;
-    transform: translateY(-50%);
-    opacity: 0;
-    transition: transform 0.1s linear;
-  }
-  &-stat__desplegado {
-    height: auto;
-    visibility: visible;
-    transform: translateY(-30px);
-    opacity: 1;
-    transition: transform 0.1s linear;
+    color: whitesmoke;
   }
 }
 
@@ -247,5 +232,3 @@ input {
     opacity: 0;
   }
 }
-
-///
