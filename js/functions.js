@@ -12,6 +12,7 @@ const getTypeChecked = () => {
 };
 
 const getCardElements = (pokemon) => {
+  templateCardTop.querySelector(".img").setAttribute("src", pokemon.img);
   templateCardTop.querySelector(".card-title").textContent = pokemon.nombre;
   templateCardTop.querySelector(".card-txt-1").textContent = pokemon.tipo1;
   templateCardTop.querySelector(".card-txt-2").textContent = pokemon.tipo2;
