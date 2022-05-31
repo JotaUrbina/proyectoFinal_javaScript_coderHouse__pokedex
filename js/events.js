@@ -10,10 +10,9 @@ formulario.addEventListener("submit", (e) => {
 formulario.addEventListener("click", (e) => {
   let inputContainer = e.target.nextElementSibling;
   if (e.target.tagName === "BUTTON" && e.target != formulario.querySelector("#favorite")) {
-    isActive = !isActive;
     deployInput(inputContainer);
   }
-  e.target === document.querySelector(".statBtn") && deployInput(rangeContainer);
+  //e.target === document.querySelector(".statBtn") && deployInput(rangeContainer);
 });
 
 //evento sección NOMBRE
@@ -66,23 +65,23 @@ formulario.addEventListener("click", (e) => {
 cardsParent.addEventListener("click", (e) => {
   let cardStat = e.target.parentElement.nextElementSibling;
   if (e.target.nodeName === "BUTTON") {
-    isActive = !isActive;
-    deployCardStat(cardStat);
+    deployCardStat(cardStat, e.target);
   }
 });
 
 // evento HOVER
-cardsParent.addEventListener("mouseover", (e) => {
+/* cardsParent.addEventListener("mouseover", (e) => {
   let cardArrow = e.target;
   e.target.nodeName === "BUTTON" && mouseOver(cardArrow);
-});
+}); */
 
 // evento CHECKBOX-CORAZÓN de las cards renderizadas
 cardsParent.addEventListener("change", (e) => {
   if (e.target.nodeName === "INPUT") {
     let heart = e.target.previousElementSibling;
     let heartCheckbox = e.target;
-    let namePkmn = e.target.parentElement.nextElementSibling.textContent;
+    let namePkmn = e.target.parentElement.parentElement.querySelector(".card-title").textContent;
+    console.log(namePkmn);
     heart.classList.toggle("fa-solid");
     heart.classList.toggle("fa-regular");
     if (heartCheckbox.checked) {

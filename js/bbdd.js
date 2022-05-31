@@ -20,6 +20,6 @@ const data = async (num) => {
   );
 };
 
-for (let i = 1; i <= 898; i++) {
+for (let i = 1; i <= 151; i++) {
   data(i);
 }

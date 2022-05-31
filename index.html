@@ -9,10 +9,15 @@
     <!--GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!--FONT AWESOME -->
     <script src="https://kit.fontawesome.com/41367c720b.js" crossorigin="anonymous"></script>
+
+    <!--SCRIPT FETCH PARA CARGAR BBDD-->
+    <script src="./js/constructorAndMethods.js"></script>
+    <script src="./js/bbdd.js"></script>
 
     <!--CSS-->
     <link rel="stylesheet" href="./css/style.css">
@@ -20,207 +25,216 @@
 </head>
 
 <body>
-    <form id="formulario">
+    <!--INTRO ANIMANDA-->
+    <section class="intro">
+        <div class="intro-red"></div>
+        <div class="intro-white"></div>
+    </section>
 
+    <!--""HEADER"""-->
+    <div class="bandContainer">
+        <div class="bandThin">
+            <span class="bandThin-circle"></span>
+            <span class="bandThin-circle"></span>
+            <span class="bandThin-circle"></span>
+        </div>
+
+        <div class="bandThick">
+
+            <span class="bandThick-circle bandThick-circle__white">
+                <span class="bandThick-circle bandThick-circle__red"></span>
+            </span>
+        </div>
+    </div>
+
+    <img src="./assets/img/pokedex-logo.svg" alt="" class="logoPokedex">
+
+    <!--INPUTS-->
+    <form id="formulario">
         <!-- NOMBRE-->
 
-        <button>Nombre</button>
+        <button class="inputTitle">Nombre</button>
 
-        <div id="inputTextName-container" class="hidden">
-            <input list="nombres" placeholder="ENTER para buscar">
+        <div id="inputTextName-container">
+            <input list="nombres" class="inputElement" placeholder="ENTER para buscar">
             <datalist id="nombres">
-                <option value="venusaur" class="datalistName"></option>
-                <option value="charizard" class="datalistName"></option>
-                <option value="blastoise" class="datalistName"></option>
-                <option value="pidgeot" class="datalistName"></option>
-                <option value="pikachu" class="datalistName"></option>
-                <option value="nidoqueen" class="datalistName"></option>
-                <option value="jigglypuff" class="datalistName"></option>
-                <option value="arcanine" class="datalistName"></option>
-                <option value="poliwrath" class="datalistName"></option>
-                <option value="machamp" class="datalistName"></option>
-                <option value="golem" class="datalistName"></option>
-                <option value="muk" class="datalistName"></option>
-                <option value="gengar" class="datalistName"></option>
-                <option value="exeggutor" class="datalistName"></option>
-                <option value="marowak" class="datalistName"></option>
-                <option value="rhydon" class="datalistName"></option>
-                <option value="mr. mime" class="datalistName"></option>
-                <option value="scyther" class="datalistName"></option>
-                <option value="jynx" class="datalistName"></option>
-                <option value="pinsir" class="datalistName"></option>
-                <option value="gyarados" class="datalistName"></option>
-                <option value="eevee" class="datalistName"></option>
-                <option value="vaporeon" class="datalistName"></option>
-                <option value="jolteon" class="datalistName"></option>
-                <option value="flareon" class="datalistName"></option>
-                <option value="aerodactyl" class="datalistName"></option>
-                <option value="snorlax" class="datalistName"></option>
-                <option value="articuno" class="datalistName"></option>
-                <option value="zapdos" class="datalistName"></option>
-                <option value="moltres" class="datalistName"></option>
-                <option value="dragonite" class="datalistName"></option>
-                <option value="mewtwo" class="datalistName"></option>
-                <option value="mew" class="datalistName"></option>
-
-
-
-
-
-
-
-
+                <!--AGREGAR OPTION POR JS-->
             </datalist>
         </div>
         <!-- NÚMERO-->
 
-        <button>Número</button>
+        <button class="inputTitle">Número</button>
 
-        <div id="inputNumberNum-container" class="hidden">
-            <input type="number" id="numInput" placeholder="ENTER para buscar">
+        <div id="inputNumberNum-container">
+            <input type="number" id="numInput" class="inputElement" placeholder="ENTER para buscar">
         </div>
         <!-- TIPO-->
 
-        <button>Tipo</button>
+        <button class="inputTitle">Tipo</button>
 
-        <div id="typeCheckbox-container" class="hidden">
-            <div class="checkbox">
-                <label for="checkAcero">Acero</label>
-                <input type="checkbox" value="acero" id="checkAcero">
+        <div id="typeCheckbox-container">
+
+
+            <div class="inputCheck-container bg-bicho">
+                <span class="inputCheck-icon icon-bicho"></span>
+                <input type="checkbox" value="bug" id="checkBicho" class="inputCheck-checkbox">
+                <label for="checkBicho" class="inputCheck-label">Bicho</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkAgua">Agua</label>
-                <input type="checkbox" value="agua" id="checkAgua">
+            <div class="inputCheck-container bg-planta">
+                <span class="inputCheck-icon icon-planta"></span>
+                <input type="checkbox" value="grass" id="checkPlanta" class="inputCheck-checkbox">
+                <label for="checkPlanta" class="inputCheck-label">Planta</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkBicho">Bicho</label>
-                <input type="checkbox" value="bicho" id="checkBicho">
+            <div class="inputCheck-container bg-electrico">
+                <span class="inputCheck-icon icon-electrico"></span>
+                <input type="checkbox" value="electric" id="checkElectrico" class="inputCheck-checkbox">
+                <label for="checkElectrico" class="inputCheck-label">Eléctrico</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkDragon">Dragón</label>
-                <input type="checkbox" value="dragon" id="checkDragon">
+            <div class="inputCheck-container bg-fuego">
+                <span class="inputCheck-icon icon-fuego"></span>
+                <input type="checkbox" value="fire" id="checkFuego" class="inputCheck-checkbox">
+                <label for="checkFuego" class="inputCheck-label">Fuego</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkElectrico">Eléctrico</label>
-                <input type="checkbox" value="electrico" id="checkElectrico">
+            <div class="inputCheck-container bg-tierra">
+                <span class="inputCheck-icon icon-tierra"></span>
+                <input type="checkbox" value="ground" id="checkTierra" class="inputCheck-checkbox">
+                <label for="checkTierra" class="inputCheck-label">Tierra</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkFantasma">Fantasma</label>
-                <input type="checkbox" value="fantasma" id="checkFantasma">
+            <div class="inputCheck-container bg-psiquico">
+                <span class="inputCheck-icon icon-psiquico"></span>
+                <input type="checkbox" value="psychic" id="checkPsiquico" class="inputCheck-checkbox">
+                <label for="checkPsiquico" class="inputCheck-label">Psíquico</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkFuego">Fuego</label>
-                <input type="checkbox" value="fuego" id="checkFuego">
+            <div class="inputCheck-container bg-lucha">
+                <span class="inputCheck-icon icon-lucha"></span>
+                <input type="checkbox" value="fighting" id="checkLucha" class="inputCheck-checkbox">
+                <label for="checkLucha" class="inputCheck-label">Lucha</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkHada">Hada</label>
-                <input type="checkbox" value="hada" id="checkHada">
+            <div class="inputCheck-container bg-hada">
+                <span class="inputCheck-icon icon-hada"></span>
+                <input type="checkbox" value="fairy" id="checkHada" class="inputCheck-checkbox">
+                <label for="checkHada" class="inputCheck-label">Hada</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkHielo">Hielo</label>
-                <input type="checkbox" value="hielo" id="checkHielo">
+            <div class="inputCheck-container bg-veneno">
+                <span class="inputCheck-icon icon-veneno"></span>
+                <input type="checkbox" value="poison" id="checkVeneno" class="inputCheck-checkbox">
+                <label for="checkVeneno" class="inputCheck-label">Veneno</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkLucha">Lucha</label>
-                <input type="checkbox" value="lucha" id="checkLucha">
+            <div class="inputCheck-container bg-fantasma">
+                <span class="inputCheck-icon icon-fantasma"></span>
+                <input type="checkbox" value="ghost" id="checkFantasma" class="inputCheck-checkbox">
+                <label for="checkFantasma" class="inputCheck-label">Fantasma</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkNormal">Normal</label>
-                <input type="checkbox" value="normal" id="checkNormal">
+            <div class="inputCheck-container bg-volador">
+                <span class="inputCheck-icon icon-volador"></span>
+                <input type="checkbox" value="flying" id="checkVolador" class="inputCheck-checkbox">
+                <label for="checkVolador" class="inputCheck-label">Volador</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkPlanta">Planta</label>
-                <input type="checkbox" value="planta" id="checkPlanta">
+            <div class="inputCheck-container bg-agua">
+                <span class="inputCheck-icon icon-agua"></span>
+                <input type="checkbox" value="water" id="checkAgua" class="inputCheck-checkbox">
+                <label for="checkAgua" class="inputCheck-label">Agua</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkPsiquico">Psíquico</label>
-                <input type="checkbox" value="psiquico" id="checkPsiquico">
+            <div class="inputCheck-container bg-dragon">
+                <span class="inputCheck-icon icon-dragon"></span>
+                <input type="checkbox" value="dragon" id="checkDragon" class="inputCheck-checkbox">
+                <label for="checkDragon" class="inputCheck-label">Dragón</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkRoca">Roca</label>
-                <input type="checkbox" value="roca" id="checkRoca">
+            <div class="inputCheck-container bg-acero">
+                <span class="inputCheck-icon icon-acero"></span>
+                <input type="checkbox" value="steel" id="checkAcero" class="inputCheck-checkbox">
+                <label for="checkAcero" class="inputCheck-label">Acero</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkSiniestro">Siniestro</label>
-                <input type="checkbox" value="siniestro" id="checkSiniestro">
+            <div class="inputCheck-container bg-hielo">
+                <span class="inputCheck-icon icon-hielo"></span>
+                <input type="checkbox" value="ice" id="checkHielo" class="inputCheck-checkbox">
+                <label for="checkHielo" class="inputCheck-label">Hielo</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkTierra">Tierra</label>
-                <input type="checkbox" value="tierra" id="checkTierra">
+            <div class="inputCheck-container bg-normal">
+                <span class="inputCheck-icon icon-normal"></span>
+                <input type="checkbox" value="normal" id="checkNormal" class="inputCheck-checkbox">
+                <label for="checkNormal" class="inputCheck-label">Normal</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkVeneno">Veneno</label>
-                <input type="checkbox" value="veneno" id="checkVeneno">
+            <div class="inputCheck-container bg-siniestro">
+                <span class="inputCheck-icon icon-siniestro"></span>
+                <input type="checkbox" value="dark" id="checkSiniestro" class="inputCheck-checkbox">
+                <label for="checkSiniestro" class="inputCheck-label">Siniestro</label>
             </div>
 
-            <div class="checkbox">
-                <label for="checkVolador">Volador</label>
-                <input type="checkbox" value="volador" id="checkVolador">
+            <div class="inputCheck-container bg-roca">
+                <span class="inputCheck-icon icon-roca"></span>
+                <input type="checkbox" value="rock" id="checkRoca" class="inputCheck-checkbox">
+                <label for="checkRoca" class="inputCheck-label">Roca</label>
             </div>
         </div>
 
         <!-- STAT-->
 
-        <button class="statBtn">Stat</button>
+        <button class="inputTitle statBtn">Stat</button>
 
-        <div id="radioStat-container" class="hidden">
-            <div class="statInput">
-                <label for="radioHp">PS</label>
-                <input type="radio" value="ps" name="stat" id="radioHp">
+        <div id="radioStat-container">
+            <div class="inputStat-container bg-hp">
+                <span class="inputStat-icon icon-hp"></span>
+                <input type="radio" value="ps" name="stat" id="radioHp" class="inputStat-radio">
+                <label for="radioHp" class="inputStat-label">PS</label>
             </div>
 
-            <div class="statInput">
-                <label for="radioAtq">Ataque</label>
-                <input type="radio" value="atq" name="stat" id="radioAtq">
+            <div class="inputStat-container bg-physical">
+                <span class="inputStat-icon icon-atq"></span>
+                <input type="radio" value="atq" name="stat" id="radioAtq" class="inputStat-radio">
+                <label for="radioAtq" class="inputStat-label">Ataque</label>
             </div>
 
-            <div class="statInput">
-                <label for="radioDef">Defensa</label>
-                <input type="radio" value="def" name="stat" id="radioDef">
+            <div class="inputStat-container bg-physical">
+                <span class="inputStat-icon icon-def"></span>
+                <input type="radio" value="def" name="stat" id="radioDef" class="inputStat-radio">
+                <label for="radioDef" class="inputStat-label">Defensa</label>
             </div>
 
-            <div class="statInput">
-                <label for="radioAtqEsp">Ataque Especial</label>
-                <input type="radio" value="atqEsp" name="stat" id="radioAtqEsp">
+            <div class="inputStat-container bg-special">
+                <span class="inputStat-icon icon-atqSp"></span>
+                <input type="radio" value="atqEsp" name="stat" id="radioAtqEsp" class="inputStat-radio">
+                <label for="radioAtqEsp" class="inputStat-label">Ataque Especial</label>
             </div>
 
-            <div class="statInput">
-                <label for="radioDefEsp">Defensa Especial</label>
-                <input type="radio" value="defEsp" name="stat" id="radioDefEsp">
+            <div class="inputStat-container bg-special">
+                <span class="inputStat-icon icon-defSp"></span>
+                <input type="radio" value="defEsp" name="stat" id="radioDefEsp" class="inputStat-radio">
+                <label for="radioDefEsp" class="inputStat-label">Defensa Especial</label>
             </div>
 
-            <div class="statInput">
-                <label for="radioSpeed">Velocidad</label>
-                <input type="radio" value="speed" name="stat" id="radioSpeed">
+            <div class="inputStat-container bg-speed">
+                <span class="inputStat-icon icon-speed"></span>
+                <input type="radio" value="speed" name="stat" id="radioSpeed" class="inputStat-radio">
+                <label for="radioSpeed" class="inputStat-label">Velocidad</label>
+            </div>
+            <div id="rangeContainer">
+                <input type="range" min="1" max="255" value="127" id="minRange">
+                <input type="range" min="1" max="255" value="127" id="maxRange">
             </div>
         </div>
 
-        <div class="hidden" id="rangeContainer">
-            <input type="range" min="1" max="255" value="127" id="minRange">
-            <input type="range" min="1" max="255" value="127" id="maxRange">
-        </div>
 
         <!--MIS FAVORITOS -->
 
-        <button id="favorite">Mis Favoritos</button>
+        <button id="favorite" class="favBtn fa-regular fa-heart"></button>
     </form>
-
 
     <section id="cards-parent"></section>
 
@@ -229,64 +243,62 @@
             <div class="card-top-container">
                 <!--CLONETOP-->
                 <div class="card-info">
-                    <div class="card-icon">
-                        <i class="fa-heart"></i>
-                        <input type="checkbox" name="" class="heart-checkbox">
-                    </div>
-                    <h2 class="card-title">Charizard</h2>
-                    <p class="card-txt-1">Fuego</p>
-                    <p class="card-txt-2">Volador</p>
+                    <h2 class="card-title"></h2>
+                    <p class="card-txt-1"></p>
+                    <p class="card-txt-2"></p>
                 </div>
                 <div class="card-img">
                     <img alt="" class="img">
                 </div>
-                <img src="./assets/img/pokeball.png" alt="" class="card-pkball">
+                <div class="card-heart">
+                    <i class="fa-heart"></i>
+                    <input type="checkbox" name="" class="heart-checkbox">
+                </div>
+                <img src="" alt="" class="card-typeIcon">
                 <button class="card-btn fa-solid fa-angle-down">
                 </button>
             </div>
             <div class="card-stat-container">
-                <div>
+                <div class="stat-container">
                     <p class="stat-title">HP</p>
-                    <p class="stat-ps">${pokemon.ps}</p>
+                    <p class="stat-ps stat-txt"></p>
                 </div>
-                <div>
-                    <p class="stat-title">Velocidad</p>
-                    <p class="stat-speed">${pokemon.speed}</p>
+                <div class="stat-container">
+                    <p class="stat-title">Speed</p>
+                    <p class="stat-speed stat-txt"></p>
                 </div>
-                <div>
-                    <p class="stat-title">Ataque</p>
-                    <p class="stat-atq">${pokemon.atq}</p>
+                <div class="stat-container">
+                    <p class="stat-title">Attack</p>
+                    <p class="stat-atq stat-txt"></p>
                 </div>
-                <div>
-                    <p class="stat-title">Defensa</p>
-                    <p class="stat-def">${pokemon.def}</p>
+                <div class="stat-container">
+                    <p class="stat-title">Defense</p>
+                    <p class="stat-def stat-txt"></p>
                 </div>
-                <div>
-                    <p class="stat-title">Atq Esp</p>
-                    <p class="stat-atqEsp">${pokemon.atqEsp}</p>
+                <div class="stat-container">
+                    <p class="stat-title">Sp Atk</p>
+                    <p class="stat-atqEsp stat-txt"></p>
                 </div>
-                <div>
-                    <p class="stat-title">Def Esp</p>
-                    <p class="stat-defEsp">${pokemon.defEsp}</p>
+                <div class="stat-container">
+                    <p class="stat-title">Sp Def</p>
+                    <p class="stat-defEsp stat-txt"></p>
                 </div>
             </div>
         </div>
     </template>
 
-
-
-
     <!--GSAP-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 
     <!--JS-->
-    <script src="./js/constructorAndMethods.js"></script>
-    <script src="./js/bbdd.js"></script>
+    <!-- <script src="./js/constructorAndMethods.js"></script>
+    <script src="./js/bbdd.js"></script> -->
+
     <script src="./js/variables.js"></script>
     <script src="./js/functions.js"></script>
     <script src="./js/events.js"></script>
     <script src="./js/animationGSAP.js"></script>
-
+    <script src="./app.js"></script>
 </body>
 
 </html>

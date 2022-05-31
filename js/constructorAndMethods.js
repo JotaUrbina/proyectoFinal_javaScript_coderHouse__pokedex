@@ -37,6 +37,10 @@ class Pokedex {
     return this.lista.filter((pokemon) => types.includes(pokemon.tipo1) || types.includes(pokemon.tipo2));
   }
 
+  filterByNum(num1, num2) {
+    return this.lista.filter((pokemon) => num1 <= pokemon.numero && num2 >= pokemon.numero);
+  }
+
   sortStatUp(property) {
     return this.lista.sort((pokemonA, pokemonB) => pokemonA[property] - pokemonB[property]);
   }
@@ -70,10 +74,10 @@ class Pokedex {
   sortStatRangeWithValue(property, arrange, value1, value2) {
     let filterStat;
     if (arrange === "mayor") {
-      filterStat = this.lista.filter((pokemon) => value1 < pokemon[property] && value2 > pokemon[property]);
+      filterStat = this.lista.filter((pokemon) => value1 <= pokemon[property] && value2 >= pokemon[property]);
       return filterStat.sort((pokemonA, pokemonB) => pokemonA[property] - pokemonB[property]);
     } else if (arrange === "menor") {
-      filterStat = this.lista.filter((pokemon) => value1 < pokemon[property] && value2 > pokemon[property]);
+      filterStat = this.lista.filter((pokemon) => value1 <= pokemon[property] && value2 >= pokemon[property]);
       return filterStat.sort((pokemonA, pokemonB) => pokemonB[property] - pokemonA[property]);
     }
   }
