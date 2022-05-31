@@ -87,7 +87,7 @@ tl.to(introRed, {
 tl.to(
   introWhite,
   {
-    duration: 5,
+    duration: 3,
     y: "100%",
     ease: "power3.out",
   },

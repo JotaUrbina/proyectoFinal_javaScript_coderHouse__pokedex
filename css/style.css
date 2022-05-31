@@ -268,6 +268,12 @@ form {
   background-color: white;
 }
 
+#rangeContainer {
+  height: 0;
+  visibility: hidden;
+  margin: 32px 0;
+}
+
 .favBtn {
   position: fixed;
   right: 0;
@@ -416,11 +422,6 @@ form {
           transform: translateY(-30px);
 }
 
-/* .hidden {
-  height: 0px;
-  visibility: hidden;
-  z-index: 0;
-} */
 #cards-parent {
   display: -webkit-box;
   display: -ms-flexbox;

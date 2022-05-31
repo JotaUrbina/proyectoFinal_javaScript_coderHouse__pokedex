@@ -29,7 +29,6 @@ const printPkmnList = (pokemons) => {
   pokemons.forEach((pokemon) => {
     getCardElements(pokemon);
     const cloneTop = templateCardTop.cloneNode(true);
-    validateTipo2(pokemon, cloneTop);
     printBgCard(
       pokemon,
       cloneTop.firstElementChild,
@@ -47,7 +46,6 @@ const printPkmn = (pokemon) => {
   cardsParent.innerHTML = "";
   getCardElements(pokemon);
   const cloneTop = templateCardTop.cloneNode(true);
-  validateTipo2(pokemon, cloneTop);
   printBgCard(
     pokemon,
     cloneTop.firstElementChild,
@@ -209,11 +207,6 @@ const printBgCard = (pokemon, card, stat, icon) => {
       break;
   }
 };
-
-function validateTipo2(pokemon, cloneTop) {
-  let type2Elem = cloneTop.querySelector(".card-txt-2");
-  pokemon.tipo2.length === 0 && type2Elem.classList.add("hidden");
-}
 
 ////////////////////////////////////////////////
 // DECLARACIÓN FUNCIONES PARA LOCAL STORAGE

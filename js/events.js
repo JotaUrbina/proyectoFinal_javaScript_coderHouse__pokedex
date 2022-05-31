@@ -12,7 +12,7 @@ formulario.addEventListener("click", (e) => {
   if (e.target.tagName === "BUTTON" && e.target != formulario.querySelector("#favorite")) {
     deployInput(inputContainer);
   }
-  //e.target === document.querySelector(".statBtn") && deployInput(rangeContainer);
+  e.target === document.querySelector(".statBtn") && deployInput(rangeContainer);
 });
 
 //evento sección NOMBRE

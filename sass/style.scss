@@ -311,6 +311,12 @@ form {
   }
 }
 
+#rangeContainer {
+  height: 0;
+  visibility: hidden;
+  margin: 32px 0;
+}
+
 .favBtn {
   position: fixed;
   right: 0;
@@ -426,12 +432,6 @@ form {
   visibility: hidden;
   transform: translateY(-30px);
 }
-
-/* .hidden {
-  height: 0px;
-  visibility: hidden;
-  z-index: 0;
-} */
 
 ////////////////////////////////////////////////
 // CARDS
