@@ -1,4 +1,4 @@
-const start = (begin) => {
+/* const start = (begin) => {
   printPkmnList(begin);
 }; //declaracion
 
@@ -30,7 +30,7 @@ const data = async () => {
   console.log(POKEDEX.lista[12]);
   console.log(POKEDEX.lista.find((pokemon) => pokemon["numero"] === 6));
   console.log(POKEDEX.findPokemon("numero", 9));
-  let begin = [
+  let begin = await [
     POKEDEX.findPokemon("numero", 3),
     POKEDEX.findPokemon("numero", 6),
     POKEDEX.findPokemon("numero", 9),
@@ -39,10 +39,36 @@ const data = async () => {
     POKEDEX.findPokemon("numero", 151),
   ];
   start(begin);
+  openAnimation();
 };
 
 window.onload = () => {
-  data();
+  //data();
+  POKEDEX.lista.forEach((pokemon) => {
+    const optionDatalist = document.createElement("option");
+    optionDatalist.setAttribute("value", pokemon.nombre);
+    fragment.append(optionDatalist);
+  });
+  datalistParent.append(fragment);
+  getPokemonNames();
+};
+ */
+
+let begin = [
+  POKEDEX.findPokemon("numero", 3),
+  POKEDEX.findPokemon("numero", 6),
+  POKEDEX.findPokemon("numero", 9),
+  POKEDEX.findPokemon("numero", 25),
+  POKEDEX.findPokemon("numero", 150),
+  POKEDEX.findPokemon("numero", 151),
+];
+const start = (begin) => {
+  printPkmnList(begin);
+};
+
+window.onload = () => {
+  start(begin);
+
   POKEDEX.lista.forEach((pokemon) => {
     const optionDatalist = document.createElement("option");
     optionDatalist.setAttribute("value", pokemon.nombre);
