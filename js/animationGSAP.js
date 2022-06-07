@@ -1,5 +1,3 @@
-let isVisible = true;
-
 const deployInput = (input) => {
   if (getComputedStyle(input).visibility === "visible") {
     gsap.to(input, {
@@ -7,7 +5,6 @@ const deployInput = (input) => {
       visibility: "hidden",
       display: "none",
       height: 0,
-      /* y: -30, */
     });
   } else {
     gsap.to(input, {
@@ -15,7 +12,6 @@ const deployInput = (input) => {
       visibility: "visible",
       display: "grid",
       height: "auto",
-      //y: 0,
     });
   }
 };
@@ -24,7 +20,6 @@ const deployCardStat = (card, arrow) => {
   if (getComputedStyle(card).visibility === "hidden") {
     gsap.to(card, {
       duration: 0.2,
-
       visibility: "visible",
       height: 210,
       y: 0,
@@ -84,13 +79,6 @@ const animationClickHeartAlert = () => {
   let tl = gsap.timeline({
     repeat: 0,
   });
-
-  /*   tl.to(".alertCursor", {
-    delay: 1,
-    duration: 1.3,
-    translateY: -110,
-    translateX: -110,
-  }); */
   tl.to(".alertHeart", {
     duration: 0.1,
     delay: 1.5,

@@ -5,14 +5,12 @@
 const formulario = document.getElementById("formulario");
 
 //container de inputs de sección NOMBRE
-const nameParent = document.getElementById("inputTextName-container"); //se podrñia borrar
 const datalistParent = document.getElementById("nombres");
 const inputName = document.getElementById("inputName");
 const submitName = document.getElementById("submitName");
 /* const optionDatalist = document.createElement("option"); */
 
 //container de inputs de sección NUMERO
-const numParent = document.getElementById("inputNumberNum-container"); //se podrñia borrar
 const inputNum = document.getElementById("inputNum");
 const submitNum = document.getElementById("submitNum");
 
@@ -37,6 +35,9 @@ const maxRangeValue = document.getElementById("rangeValue-max");
 const minProgressBar = document.getElementById("progressBar-min");
 const maxProgressBar = document.getElementById("progressBar-max");
 
+//Botón favoritos
+const favoriteBtn = document.getElementById("favorite");
+
 //elementos para print
 const cardsParent = document.getElementById("cards-parent");
 const templateCardTop = document.querySelector(".cardTop-template").content;
@@ -51,14 +52,3 @@ introWhite = document.querySelector(".intro-white");
 
 //BBDD Nombres Pokemon para validación
 let pokemonNames = [];
-
-//Variable para Home
-
-/* let begin = [
-  POKEDEX.findPokemon("numero", 3),
-  POKEDEX.findPokemon("numero", 6),
-  POKEDEX.findPokemon("numero", 9),
-  POKEDEX.findPokemon("numero", 25),
-  POKEDEX.findPokemon("numero", 150),
-  POKEDEX.findPokemon("numero", 151),
-]; */
