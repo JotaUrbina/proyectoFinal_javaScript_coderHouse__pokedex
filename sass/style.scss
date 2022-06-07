@@ -1,59 +1,4 @@
-////////////////////////////////////////////////
-// COLORES BASE
-////////////////////////////////////////////////
-$rojoPrimario: #ff1c1c;
-$appBg: #f3f3f3;
-$inputBg: #e5e5e5;
-$rangeBg: #e9e9e9;
-
-////////////////////////////////////////////////
-// COLORES - TIPO
-////////////////////////////////////////////////
-$acero: #4f8eaa;
-$aceroLight: hsl(218, 37%, 69%);
-$agua: #508fe1;
-$aguaLight: hsl(234, 71%, 80%);
-$bicho: #a4d235;
-$bichoLight: hsl(98, 64%, 82%);
-$dragon: #0d6dc4;
-$dragonLight: hsl(229, 88%, 81%);
-$electrico: #ffd93e;
-$electricoLight: hsl(68, 100%, 82%);
-$fantasma: #5269ac;
-$fantasmaLight: hsl(245, 35%, 70%);
-$fuego: #ff9743;
-$fuegoLight: hsl(47, 100%, 83%);
-$hada: #ff93f6;
-$hadaLight: hsl(325, 100%, 89%);
-$hielo: #70cebb;
-$hieloLight: hsl(188, 49%, 82%);
-$lucha: #cc3a6a;
-$luchaLight: hsl(360, 59%, 71%);
-$normal: #8f98a2;
-$normalLight: hsl(232, 9%, 80%);
-$planta: #52be5e;
-$plantaLight: hsl(147, 45%, 73%);
-$psiquico: #ff7179;
-$psiquicoLight: hsl(377, 100%, 86%);
-$roca: #d2b48a;
-$rocaLight: hsl(55, 44%, 85%);
-$siniestro: #5b5565;
-$siniestroLight: hsl(283, 9%, 56%);
-$tierra: #e1703d;
-$tierraLight: hsl(39, 73%, 76%);
-$veneno: #b262d0;
-$venenoLight: hsl(304, 54%, 80%);
-$volador: #89a9e8;
-$voladorLight: hsl(240, 67%, 85%);
-
-////////////////////////////////////////////////
-// COLORES - STATS
-////////////////////////////////////////////////
-
-$hp: #00bb58;
-$fisico: #ffc629;
-$especial: #1f8ae4;
-$velocidad: #00dae3;
+@import "./partials/variables";
 
 ////////////////////////////////////////////////
 // ESTILOS GLOBALES
@@ -79,69 +24,8 @@ body {
 // INTRO
 ////////////////////////////////////////////////
 
-.intro {
-  &-red {
-    position: absolute;
-    width: 100%;
-    height: 50vh;
-    background-color: $rojoPrimario;
-    z-index: 10;
-    border-bottom: 40px solid black;
-    //display: none; //comentar para funcionamiento
-    &::after {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 150px;
-      height: 150px;
-      background-color: white;
-      border-radius: 50%;
-      border: 40px solid black;
-      left: calc(50% - 115px);
-      top: calc(100% - 95px);
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      left: calc(50% - 56px);
-      top: calc(100% - 36px);
-      display: block;
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 6px solid black;
-      box-shadow: 0px 6px black;
-      z-index: 11;
-    }
-  }
-  &-white {
-    position: absolute;
-    top: 370.5px;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-    background-color: white;
-    border-top: 3px solid black;
-    z-index: 9;
-    //display: none; //comentar para funcionamiento
+@import "./partials/introElements";
 
-    &::after {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 150px;
-      height: 75px;
-      background-color: #f3f3f3;
-      border-radius: 0px 0px 150px 150px;
-      border-bottom: 3px solid black;
-      border-right: 3px solid black;
-      border-left: 3px solid black;
-      border-top: 3px solid #f3f3f3;
-      left: calc(50% - 75px);
-      top: -4px;
-    }
-  }
-}
 ////////////////////////////////////////////////
 // HEADER
 ////////////////////////////////////////////////
@@ -160,14 +44,14 @@ body {
     justify-content: flex-end;
     padding: 0px 24px;
     width: 100%;
-    height: 70px;
+    height: 50%;
     background-color: $rojoPrimario;
     border-bottom: 2px solid black;
     &-circle {
       display: block;
       margin: 0px 8px;
-      width: 20px;
-      height: 20px;
+      width: 1.25rem;
+      height: 1.25rem;
       border: 2px solid black;
       border-radius: 50%;
       box-shadow: 0px 2px black;
@@ -175,10 +59,10 @@ body {
   }
   &Thick {
     position: absolute;
-    top: 68px;
-    left: -34px;
+    top: 10.1vh;
+    left: -8%;
     width: 78%;
-    height: 70px;
+    height: 50%;
     background-color: $rojoPrimario;
     border-bottom: 2px solid black;
     border-right: 2px solid black;
@@ -213,7 +97,6 @@ body {
 .logoPokedex {
   display: block;
   margin: 32px auto;
-
   width: 300px;
 }
 
@@ -228,24 +111,54 @@ form {
   width: 80%;
 }
 
+#inputTextName-container,
+#inputNumberNum-container {
+  display: flex;
+  gap: 12px;
+}
+
+#submitName,
+#submitNum {
+  background-color: $inputBg;
+  width: 63px;
+  font-family: "Barlow Condensed", sans-serif;
+  border: none;
+  border-radius: 8px;
+  &:hover {
+    cursor: pointer;
+  }
+}
 .input {
   &Title {
     margin: 16px;
-    width: 200px;
+    width: max-content;
     font-family: "Barlow Condensed", sans-serif;
     font-size: 1.5rem;
     font-weight: 400;
     text-align: left;
     background: transparent;
     border: none;
+    overflow: hidden;
     &:hover {
       cursor: pointer;
+    }
+    &::after {
+      content: "";
+      display: block;
+      margin-top: -3px;
+      width: 100%;
+      height: 2px;
+      background: black;
+      transform: translateX(-105%);
+    }
+    &:hover::after {
+      transform: translateX(0);
+      transition: all 0.15s ease-in-out;
     }
   }
   &Element {
     padding: 20px 8px;
     width: 100%;
-    //max-width: 600px;
     font-family: "Barlow Condensed", sans-serif;
     font-size: 1.2rem;
     background-color: $inputBg;
@@ -314,6 +227,7 @@ form {
 #rangeContainer {
   height: 0;
   visibility: hidden;
+  display: none;
   margin: 32px 0;
 }
 
@@ -328,6 +242,7 @@ form {
   background-color: $inputBg;
   border-radius: 8px 0 0 8px;
   font-size: 1.5rem;
+  z-index: 9;
   cursor: pointer;
   &:hover {
     background-color: $rojoPrimario;
@@ -418,7 +333,7 @@ form {
   width: 100%;
   height: 0px;
   visibility: hidden;
-  transform: translateY(-30px);
+  display: none;
 }
 
 #radioStat-container {
@@ -430,7 +345,7 @@ form {
   width: 100%;
   height: 0px;
   visibility: hidden;
-  transform: translateY(-30px);
+  display: none;
 }
 
 ////////////////////////////////////////////////
@@ -705,4 +620,142 @@ form {
     transform: scale(2.5);
     opacity: 0;
   }
+}
+
+.alert {
+  &Heart {
+    font-size: 4rem;
+    color: black;
+
+    opacity: 0.99;
+  }
+  &HeartSolid {
+    position: absolute;
+    left: calc(50% - 32px);
+    font-size: 4rem;
+    color: black;
+    transform: scale(0.8);
+    opacity: 0;
+    visibility: hidden;
+  }
+  &Cursor {
+    font-size: 3rem;
+    position: absolute;
+    right: -110px;
+    bottom: -110px;
+    color: black;
+    z-index: 1;
+  }
+}
+
+.swal2-styled.swal2-confirm {
+  background-color: $rojoPrimario !important;
+  box-shadow: 0 0 0 3px hsl(0, 100%, 75%) !important;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  margin-top: 10vh;
+  width: 100%;
+  height: 10vh;
+  background-color: $rojoPrimario;
+  border-top: 2px solid black;
+}
+
+.minRange-container,
+.maxRange-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  width: 100%;
+  position: relative;
+}
+#minRange,
+#maxRange {
+  position: relative;
+  appearance: none;
+  background-color: transparent;
+  width: 100%;
+  height: 20px;
+  outline: none;
+  border-radius: 8px;
+  margin: 4px;
+  z-index: 3;
+  border: 1px solid black;
+  &::-webkit-slider-thumb {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    appearance: none;
+    z-index: 3;
+    cursor: pointer;
+  }
+}
+
+.range {
+  &Selector-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    bottom: calc(50% - 22px);
+    left: calc(50% - 20px);
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+  &Selector {
+    display: block;
+    height: 40px;
+    width: 40px;
+    background-image: url(../assets/img/pokeball-rango.svg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+  }
+}
+
+#rangeValue-min,
+#rangeValue-max {
+  position: absolute;
+  top: -35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 20px;
+  color: whitesmoke;
+  font-weight: 500;
+  background-color: $rojoPrimario;
+  border-radius: 4px 4px 0 0;
+  &::before {
+    content: "";
+    height: 0px;
+    width: 0px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid $rojoPrimario;
+    border-bottom: 15px solid transparent;
+    position: absolute;
+    left: 0;
+    bottom: -30px;
+  }
+}
+
+#progressBar-min,
+#progressBar-max {
+  display: block;
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 4px;
+  width: 48%;
+  height: 20px;
+  background-color: $rojoPrimario;
+  border-radius: 8px;
 }

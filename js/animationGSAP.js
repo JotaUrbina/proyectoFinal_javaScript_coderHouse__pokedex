@@ -5,15 +5,17 @@ const deployInput = (input) => {
     gsap.to(input, {
       duration: 0.2,
       visibility: "hidden",
+      display: "none",
       height: 0,
-      y: -30,
+      /* y: -30, */
     });
   } else {
     gsap.to(input, {
       duration: 0.2,
       visibility: "visible",
+      display: "grid",
       height: "auto",
-      y: 0,
+      //y: 0,
     });
   }
 };
@@ -55,50 +57,62 @@ const deployCardStat = (card, arrow) => {
   }
 };
 
-/* const mouseOver = (card) => {
+const openAnimation = () => {
   let tl = gsap.timeline({
-    repeat: 5,
-    yoyo: true,
+    repeat: 0,
   });
-  tl.to(card, {
-    duration: 0.3,
-    scale: 1.5,
+  tl.to(introRed, {
+    duration: 1.5,
+    y: "-130%",
+    ease: "power3.out",
+    display: "none",
   });
-  tl.to(card, {
-    duration: 0.3,
+
+  tl.to(
+    introWhite,
+    {
+      duration: 2,
+      y: "100%",
+      ease: "power3.out",
+      display: "none",
+    },
+    "-=1.5"
+  );
+};
+
+const animationClickHeartAlert = () => {
+  let tl = gsap.timeline({
+    repeat: 0,
+  });
+
+  /*   tl.to(".alertCursor", {
+    delay: 1,
+    duration: 1.3,
+    translateY: -110,
+    translateX: -110,
+  }); */
+  tl.to(".alertHeart", {
+    duration: 0.1,
+    delay: 1.5,
+    scale: 0.8,
+  });
+
+  tl.to(".alertHeart", {
+    duration: 0.01,
+    opacity: 0,
+    visibility: "hidden",
+  });
+  tl.to(
+    ".alertHeartSolid",
+    {
+      duration: 0.01,
+      visibility: "visible",
+      opacity: 0.99,
+    },
+    "-=0.01"
+  );
+  tl.to(".alertHeartSolid", {
+    duration: 0.1,
     scale: 1,
   });
-}; */
-
-introRed = document.querySelector(".intro-red");
-introWhite = document.querySelector(".intro-white");
-
-let tl = gsap.timeline({
-  repeat: 0,
-  yoyo: true,
-});
-tl.to(introRed, {
-  duration: 1.5,
-  y: "-130%",
-  delay: 1.5, //1.5 para el final
-  ease: "power3.out",
-});
-
-tl.to(
-  introWhite,
-  {
-    duration: 3,
-    y: "100%",
-    ease: "power3.out",
-  },
-  "-=1.5"
-);
-
-tl.to(introWhite, {
-  duration: 0,
-  display: "none",
-});
-
-tl.to(introRed, {
-  display: "none",
-});
+};

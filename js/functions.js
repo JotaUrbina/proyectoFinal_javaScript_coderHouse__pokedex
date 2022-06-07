@@ -226,4 +226,12 @@ const deleteLocalStorage = (namePkmn) => {
   favoritePkmn.splice(index, 1);
   favoritePkmnString = JSON.stringify(favoritePkmn);
   localStorage.setItem("favoritos", favoritePkmnString);
+  favoritePkmn.length === 0 && localStorage.clear();
+};
+
+/////
+
+const getPokemonNames = () => {
+  POKEDEX.lista.forEach((pokemon) => pokemonNames.push(pokemon.nombre));
+  return pokemonNames;
 };

@@ -16,8 +16,9 @@
     <script src="https://kit.fontawesome.com/41367c720b.js" crossorigin="anonymous"></script>
 
     <!--SCRIPT FETCH PARA CARGAR BBDD-->
+
     <script src="./js/constructorAndMethods.js"></script>
-    <script src="./js/bbdd.js"></script>
+    <!--     <script src="./js/bbdd.js"></script> -->
 
     <!--CSS-->
     <link rel="stylesheet" href="./css/style.css">
@@ -56,21 +57,22 @@
         <button class="inputTitle">Nombre</button>
 
         <div id="inputTextName-container">
-            <input list="nombres" class="inputElement" placeholder="ENTER para buscar">
+            <input list="nombres" class="inputElement" id="inputName">
             <datalist id="nombres">
-                <!--AGREGAR OPTION POR JS-->
             </datalist>
+            <button type="submit" id="submitName">Search</button>
         </div>
         <!-- NÚMERO-->
 
         <button class="inputTitle">Número</button>
 
         <div id="inputNumberNum-container">
-            <input type="number" id="numInput" class="inputElement" placeholder="ENTER para buscar">
+            <input type="number" class="inputElement" id="inputNum">
+            <button type="submit" id="submitNum">Search</button>
         </div>
         <!-- TIPO-->
 
-        <button class="inputTitle">Tipo</button>
+        <button class="inputTitle checkBtn" id="typeBtnTitle">Tipo</button>
 
         <div id="typeCheckbox-container">
 
@@ -186,48 +188,73 @@
 
         <!-- STAT-->
 
-        <button class="inputTitle statBtn">Stat</button>
+        <button class="inputTitle statBtn" id="statBtnTitle">Stat</button>
 
         <div id="radioStat-container">
             <div class="inputStat-container bg-hp">
                 <span class="inputStat-icon icon-hp"></span>
                 <input type="radio" value="ps" name="stat" id="radioHp" class="inputStat-radio">
-                <label for="radioHp" class="inputStat-label">PS</label>
+                <label for="radioHp" class="inputStat-label">HP</label>
             </div>
 
             <div class="inputStat-container bg-physical">
                 <span class="inputStat-icon icon-atq"></span>
                 <input type="radio" value="atq" name="stat" id="radioAtq" class="inputStat-radio">
-                <label for="radioAtq" class="inputStat-label">Ataque</label>
+                <label for="radioAtq" class="inputStat-label">Attack</label>
             </div>
 
             <div class="inputStat-container bg-physical">
                 <span class="inputStat-icon icon-def"></span>
                 <input type="radio" value="def" name="stat" id="radioDef" class="inputStat-radio">
-                <label for="radioDef" class="inputStat-label">Defensa</label>
+                <label for="radioDef" class="inputStat-label">Defense</label>
             </div>
 
             <div class="inputStat-container bg-special">
                 <span class="inputStat-icon icon-atqSp"></span>
                 <input type="radio" value="atqEsp" name="stat" id="radioAtqEsp" class="inputStat-radio">
-                <label for="radioAtqEsp" class="inputStat-label">Ataque Especial</label>
+                <label for="radioAtqEsp" class="inputStat-label">Special Attack</label>
             </div>
 
             <div class="inputStat-container bg-special">
                 <span class="inputStat-icon icon-defSp"></span>
                 <input type="radio" value="defEsp" name="stat" id="radioDefEsp" class="inputStat-radio">
-                <label for="radioDefEsp" class="inputStat-label">Defensa Especial</label>
+                <label for="radioDefEsp" class="inputStat-label">Special Defense</label>
             </div>
 
             <div class="inputStat-container bg-speed">
                 <span class="inputStat-icon icon-speed"></span>
                 <input type="radio" value="speed" name="stat" id="radioSpeed" class="inputStat-radio">
-                <label for="radioSpeed" class="inputStat-label">Velocidad</label>
+                <label for="radioSpeed" class="inputStat-label">Speed</label>
             </div>
         </div>
         <div id="rangeContainer">
-            <input type="range" min="1" max="255" value="127" id="minRange">
-            <input type="range" min="1" max="255" value="127" id="maxRange">
+            <!--   <div class="minRange-container">
+                <input type="range" min="1" max="255" value="127.5" id="minRange">
+                <div class="rangeSelector-container" id="minRange-selector">
+                    <div class="rangeSelector"></div>
+                </div>
+                <span id="prograssBar"></span>
+            </div> -->
+            <div class="minRange-container">
+                <input type="range" min="1" max="256" value="115" id="minRange">
+                <div class="rangeSelector-container" id="minRange-selector">
+                    <div class="rangeSelector"></div>
+                    <div id="rangeValue-min"></div>
+                </div>
+                <span id="progressBar-min"></span>
+            </div>
+
+
+
+            <div class="maxRange-container">
+                <input type="range" min="1" max="256" value="115" id="maxRange">
+                <div class="rangeSelector-container" id="maxRange-selector">
+                    <div class="rangeSelector"></div>
+                    <div id="rangeValue-max"></div>
+                </div>
+                <span id="progressBar-max"></span>
+            </div>
+
         </div>
 
 
@@ -238,6 +265,8 @@
 
     <section id="cards-parent"></section>
 
+
+    <footer>By Chetos</footer>
     <template class="cardTop-template">
         <div class="card">
             <div class="card-top-container">
@@ -290,6 +319,9 @@
     <!--GSAP-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 
+    <!--SWEET ALERT-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!--JS-->
     <!-- <script src="./js/constructorAndMethods.js"></script>
     <script src="./js/bbdd.js"></script> -->
@@ -299,6 +331,7 @@
     <script src="./js/events.js"></script>
     <script src="./js/animationGSAP.js"></script>
     <script src="./app.js"></script>
+
 </body>
 
 </html>
