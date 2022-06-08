@@ -37,7 +37,7 @@ submitNum.addEventListener("click", () => {
   console.log(value);
   value > 0 && value <= 151 && printPkmn(POKEDEX.findPokemon("numero", value));
   value > 151 && notFoundAlert();
-  (value === 0 || value > 898) && notExistAlert();
+  (value <= 0 || value > 898) && notExistAlert();
 });
 
 inputNum.addEventListener("keypress", (e) => {
