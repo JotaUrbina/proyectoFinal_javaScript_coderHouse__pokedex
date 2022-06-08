@@ -34,6 +34,14 @@
   -webkit-box-shadow: 0px 6px black;
           box-shadow: 0px 6px black;
   z-index: 11;
+  -webkit-animation: loading 1s linear infinite;
+          animation: loading 1s linear infinite;
+}
+
+.intro-red::before {
+  content: attr(data-content);
+  background-color: #ff1c1c;
+  opacity: 0.8;
 }
 
 .intro-white {

@@ -1,0 +1,142 @@
+@import "./partials/variables";
+
+////////////////////////////////////////////////
+// ESTILOS GLOBALES
+////////////////////////////////////////////////
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Barlow Condensed", sans-serif; //400 500 600 700
+}
+
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 320px;
+  background-color: $appBg;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  margin-top: 10vh;
+  width: 100%;
+  height: 10vh;
+  background-color: $rojoPrimario;
+  border-top: 2px solid black;
+  p {
+    font-size: 0.6rem;
+    font-family: "Barlow Condensed", sans-serif;
+  }
+}
+
+////////////////////////////////////////////////
+// INTRO
+////////////////////////////////////////////////
+
+@import "./partials/introElements";
+
+////////////////////////////////////////////////
+// HEADER
+////////////////////////////////////////////////
+
+@import "./partials/header";
+
+////////////////////////////////////////////////
+// FORM
+////////////////////////////////////////////////
+
+@import "./partials/form";
+
+////////////////////////////////////////////////
+// CARDS
+////////////////////////////////////////////////
+
+@import "./partials/cardsPokemon";
+
+////////////////////////////////////////////////
+// ANIMACIONES
+////////////////////////////////////////////////
+.swal2-styled.swal2-confirm {
+  background-color: $rojoPrimario !important;
+  box-shadow: 0 0 0 3px hsl(0, 100%, 75%) !important;
+}
+
+.alert {
+  &Heart {
+    font-size: 4rem;
+    color: black;
+    opacity: 0.99;
+  }
+  &HeartSolid {
+    position: absolute;
+    left: calc(50% - 32px);
+    font-size: 4rem;
+    color: black;
+    transform: scale(0.8);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-color: white;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    background-color: $rojoPrimario;
+    opacity: 0.5;
+  }
+  59% {
+    opacity: 1;
+  }
+  60% {
+    background-color: white;
+  }
+  69% {
+    opacity: 1;
+  }
+  70% {
+    background-color: $rojoPrimario;
+    opacity: 0.5;
+  }
+  79% {
+    opacity: 1;
+  }
+  80% {
+    background-color: white;
+  }
+}
+
+@keyframes cardArrowHover {
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+////////////////////////////////////////////////
+// MEDIA QUERIES
+////////////////////////////////////////////////
+
+@import "./partials/mediaQueries";

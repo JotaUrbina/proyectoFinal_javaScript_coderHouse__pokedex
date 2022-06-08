@@ -15,11 +15,8 @@
     <!--FONT AWESOME -->
     <script src="https://kit.fontawesome.com/41367c720b.js" crossorigin="anonymous"></script>
 
-    <!--SCRIPT FETCH PARA CARGAR BBDD-->
-
-    <script src="./js/constructorAndMethods.js"></script>
-
-    <script src="./js/bbdd.js"></script>
+    <!--BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
     <!--CSS-->
     <link rel="stylesheet" href="./css/style.css">
@@ -40,197 +37,168 @@
             <span class="bandThin-circle"></span>
             <span class="bandThin-circle"></span>
         </div>
-
         <div class="bandThick">
-
             <span class="bandThick-circle bandThick-circle__white">
                 <span class="bandThick-circle bandThick-circle__red"></span>
             </span>
         </div>
     </div>
 
-    <img src="./assets/img/pokedex-logo.svg" alt="" class="logoPokedex">
+    <img src="./assets/img/pokedex-logo.svg" alt="Logo pokedex" class="logoPokedex">
+    <h2 class="head-title">Find or filter your favorites pokemon and check his stats</h2>
+
 
     <!--INPUTS-->
     <form id="formulario">
+
         <!-- NOMBRE-->
-
-        <button class="inputTitle">Nombre</button>
-
+        <button class="inputTitle">Name</button>
         <div id="inputTextName-container">
-            <input list="nombres" class="inputElement" id="inputName">
+            <input list="nombres" class="inputElement" id="inputName" placeholder="Find it by his name">
             <datalist id="nombres">
             </datalist>
-            <button type="submit" id="submitName">Search</button>
+            <button type="submit" id="submitName"><i class="bi bi-search"></i></button>
         </div>
+
         <!-- NÚMERO-->
-
-        <button class="inputTitle">Número</button>
-
+        <button class="inputTitle">Number</button>
         <div id="inputNumberNum-container">
-            <input type="number" class="inputElement" id="inputNum">
-            <button type="submit" id="submitNum">Search</button>
+            <input type="number" class="inputElement" id="inputNum" placeholder="Find it by his number">
+            <button type="submit" id="submitNum"><i class="bi bi-search"></i></button>
         </div>
         <!-- TIPO-->
 
-        <button class="inputTitle checkBtn" id="typeBtnTitle">Tipo</button>
-
+        <button class="inputTitle inputTitle--hover checkBtn" id="typeBtnTitle">Type</button>
         <div id="typeCheckbox-container">
-
-
             <div class="inputCheck-container bg-bicho">
                 <span class="inputCheck-icon icon-bicho"></span>
                 <input type="checkbox" value="bug" id="checkBicho" class="inputCheck-checkbox">
-                <label for="checkBicho" class="inputCheck-label">Bicho</label>
+                <label for="checkBicho" class="inputCheck-label">Bug</label>
             </div>
-
             <div class="inputCheck-container bg-planta">
                 <span class="inputCheck-icon icon-planta"></span>
                 <input type="checkbox" value="grass" id="checkPlanta" class="inputCheck-checkbox">
-                <label for="checkPlanta" class="inputCheck-label">Planta</label>
+                <label for="checkPlanta" class="inputCheck-label">Grass</label>
             </div>
-
             <div class="inputCheck-container bg-electrico">
                 <span class="inputCheck-icon icon-electrico"></span>
                 <input type="checkbox" value="electric" id="checkElectrico" class="inputCheck-checkbox">
-                <label for="checkElectrico" class="inputCheck-label">Eléctrico</label>
+                <label for="checkElectrico" class="inputCheck-label">Electric</label>
             </div>
-
             <div class="inputCheck-container bg-fuego">
                 <span class="inputCheck-icon icon-fuego"></span>
                 <input type="checkbox" value="fire" id="checkFuego" class="inputCheck-checkbox">
-                <label for="checkFuego" class="inputCheck-label">Fuego</label>
+                <label for="checkFuego" class="inputCheck-label">Fire</label>
             </div>
-
             <div class="inputCheck-container bg-tierra">
                 <span class="inputCheck-icon icon-tierra"></span>
                 <input type="checkbox" value="ground" id="checkTierra" class="inputCheck-checkbox">
-                <label for="checkTierra" class="inputCheck-label">Tierra</label>
+                <label for="checkTierra" class="inputCheck-label">Ground</label>
             </div>
-
             <div class="inputCheck-container bg-psiquico">
                 <span class="inputCheck-icon icon-psiquico"></span>
                 <input type="checkbox" value="psychic" id="checkPsiquico" class="inputCheck-checkbox">
-                <label for="checkPsiquico" class="inputCheck-label">Psíquico</label>
+                <label for="checkPsiquico" class="inputCheck-label">Psychic</label>
             </div>
-
             <div class="inputCheck-container bg-lucha">
                 <span class="inputCheck-icon icon-lucha"></span>
                 <input type="checkbox" value="fighting" id="checkLucha" class="inputCheck-checkbox">
-                <label for="checkLucha" class="inputCheck-label">Lucha</label>
+                <label for="checkLucha" class="inputCheck-label">Fighting</label>
             </div>
-
             <div class="inputCheck-container bg-hada">
                 <span class="inputCheck-icon icon-hada"></span>
                 <input type="checkbox" value="fairy" id="checkHada" class="inputCheck-checkbox">
-                <label for="checkHada" class="inputCheck-label">Hada</label>
+                <label for="checkHada" class="inputCheck-label">Fairy</label>
             </div>
-
             <div class="inputCheck-container bg-veneno">
                 <span class="inputCheck-icon icon-veneno"></span>
                 <input type="checkbox" value="poison" id="checkVeneno" class="inputCheck-checkbox">
-                <label for="checkVeneno" class="inputCheck-label">Veneno</label>
+                <label for="checkVeneno" class="inputCheck-label">Poison</label>
             </div>
-
             <div class="inputCheck-container bg-fantasma">
                 <span class="inputCheck-icon icon-fantasma"></span>
                 <input type="checkbox" value="ghost" id="checkFantasma" class="inputCheck-checkbox">
-                <label for="checkFantasma" class="inputCheck-label">Fantasma</label>
+                <label for="checkFantasma" class="inputCheck-label">Ghost</label>
             </div>
-
             <div class="inputCheck-container bg-volador">
                 <span class="inputCheck-icon icon-volador"></span>
                 <input type="checkbox" value="flying" id="checkVolador" class="inputCheck-checkbox">
-                <label for="checkVolador" class="inputCheck-label">Volador</label>
+                <label for="checkVolador" class="inputCheck-label">Flying</label>
             </div>
-
             <div class="inputCheck-container bg-agua">
                 <span class="inputCheck-icon icon-agua"></span>
                 <input type="checkbox" value="water" id="checkAgua" class="inputCheck-checkbox">
-                <label for="checkAgua" class="inputCheck-label">Agua</label>
+                <label for="checkAgua" class="inputCheck-label">Water</label>
             </div>
-
             <div class="inputCheck-container bg-dragon">
                 <span class="inputCheck-icon icon-dragon"></span>
                 <input type="checkbox" value="dragon" id="checkDragon" class="inputCheck-checkbox">
-                <label for="checkDragon" class="inputCheck-label">Dragón</label>
+                <label for="checkDragon" class="inputCheck-label">Dragon</label>
             </div>
-
             <div class="inputCheck-container bg-acero">
                 <span class="inputCheck-icon icon-acero"></span>
                 <input type="checkbox" value="steel" id="checkAcero" class="inputCheck-checkbox">
-                <label for="checkAcero" class="inputCheck-label">Acero</label>
+                <label for="checkAcero" class="inputCheck-label">Steel</label>
             </div>
-
             <div class="inputCheck-container bg-hielo">
                 <span class="inputCheck-icon icon-hielo"></span>
                 <input type="checkbox" value="ice" id="checkHielo" class="inputCheck-checkbox">
-                <label for="checkHielo" class="inputCheck-label">Hielo</label>
+                <label for="checkHielo" class="inputCheck-label">Ice</label>
             </div>
-
             <div class="inputCheck-container bg-normal">
                 <span class="inputCheck-icon icon-normal"></span>
                 <input type="checkbox" value="normal" id="checkNormal" class="inputCheck-checkbox">
                 <label for="checkNormal" class="inputCheck-label">Normal</label>
             </div>
-
             <div class="inputCheck-container bg-siniestro">
                 <span class="inputCheck-icon icon-siniestro"></span>
                 <input type="checkbox" value="dark" id="checkSiniestro" class="inputCheck-checkbox">
-                <label for="checkSiniestro" class="inputCheck-label">Siniestro</label>
+                <label for="checkSiniestro" class="inputCheck-label">Dark</label>
             </div>
-
             <div class="inputCheck-container bg-roca">
                 <span class="inputCheck-icon icon-roca"></span>
                 <input type="checkbox" value="rock" id="checkRoca" class="inputCheck-checkbox">
-                <label for="checkRoca" class="inputCheck-label">Roca</label>
+                <label for="checkRoca" class="inputCheck-label">Rock</label>
             </div>
         </div>
 
         <!-- STAT-->
-
-        <button class="inputTitle statBtn" id="statBtnTitle">Stat</button>
-
+        <button class="inputTitle inputTitle--hover" id="statBtnTitle">Stat</button>
         <div id="radioStat-container">
             <div class="inputStat-container bg-hp">
                 <span class="inputStat-icon icon-hp"></span>
                 <input type="radio" value="ps" name="stat" id="radioHp" class="inputStat-radio">
                 <label for="radioHp" class="inputStat-label">HP</label>
             </div>
-
             <div class="inputStat-container bg-physical">
                 <span class="inputStat-icon icon-atq"></span>
                 <input type="radio" value="atq" name="stat" id="radioAtq" class="inputStat-radio">
                 <label for="radioAtq" class="inputStat-label">Attack</label>
             </div>
-
             <div class="inputStat-container bg-physical">
                 <span class="inputStat-icon icon-def"></span>
                 <input type="radio" value="def" name="stat" id="radioDef" class="inputStat-radio">
                 <label for="radioDef" class="inputStat-label">Defense</label>
             </div>
-
             <div class="inputStat-container bg-special">
                 <span class="inputStat-icon icon-atqSp"></span>
                 <input type="radio" value="atqEsp" name="stat" id="radioAtqEsp" class="inputStat-radio">
                 <label for="radioAtqEsp" class="inputStat-label">Special Attack</label>
             </div>
-
             <div class="inputStat-container bg-special">
                 <span class="inputStat-icon icon-defSp"></span>
                 <input type="radio" value="defEsp" name="stat" id="radioDefEsp" class="inputStat-radio">
                 <label for="radioDefEsp" class="inputStat-label">Special Defense</label>
             </div>
-
             <div class="inputStat-container bg-speed">
                 <span class="inputStat-icon icon-speed"></span>
                 <input type="radio" value="speed" name="stat" id="radioSpeed" class="inputStat-radio">
                 <label for="radioSpeed" class="inputStat-label">Speed</label>
             </div>
         </div>
-        <div id="rangeContainer">
 
-            <h3>MIN</h3>
+        <div id="rangeContainer">
+            <h3 class="rangeBar-title">MIN</h3>
             <div class="minRange-container">
                 <input type="range" min="1" max="256" value="115" id="minRange">
                 <div class="rangeSelector-container" id="minRange-selector">
@@ -240,9 +208,7 @@
                 <span id="progressBar-min"></span>
             </div>
 
-
-
-            <h3>MAX</h3>
+            <h3 class="rangeBar-title">MAX</h3>
             <div class="maxRange-container">
                 <input type="range" min="1" max="256" value="115" id="maxRange">
                 <div class="rangeSelector-container" id="maxRange-selector">
@@ -251,19 +217,21 @@
                 </div>
                 <span id="progressBar-max"></span>
             </div>
-
         </div>
 
-
         <!--MIS FAVORITOS -->
-
-        <button id="favorite" class="favBtn fa-regular fa-heart"></button>
+        <button id="favorite" class="favBtn bi bi-heart"></button>
     </form>
 
+    <!--CARDS POKEMON SECTION -->
     <section id="cards-parent"></section>
 
+    <!--FOOTER -->
+    <footer>
+        <h6>Proyecto curso Javascript - CoderHouse</h6>
+        <p>By elKako</p>
+    </footer>
 
-    <footer>By Chetos</footer>
     <template class="cardTop-template">
         <div class="card">
             <div class="card-top-container">
@@ -281,7 +249,7 @@
                     <input type="checkbox" name="" class="heart-checkbox">
                 </div>
                 <img src="" alt="" class="card-typeIcon">
-                <button class="card-btn fa-solid fa-angle-down">
+                <button class="card-btn card-btn--down fa-solid fa-angle-down">
                 </button>
             </div>
             <div class="card-stat-container">
@@ -319,18 +287,16 @@
     <!--SWEET ALERT-->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!--JS-->
-    <!--     <script src="./js/constructorAndMethods.js"></script>
-
-    <script src="./js/bbdd.js"></script> -->
-
+    <!--SCRIPTS-->
+    <script src="./js/classPokemon.js"></script>
+    <script src="./js/classPokedex.js"></script>
+    <script src="./js/bbdd.js"></script>
     <script src="./js/variables.js"></script>
     <script src="./js/functions.js"></script>
     <script src="./js/events.js"></script>
     <script src="./js/animationGSAP.js"></script>
     <script src="./js/sweetAlertFunctions.js"></script>
     <script src="./app.js"></script>
-
 </body>
 
 </html>

@@ -1,0 +1,363 @@
+@import "./variables";
+
+////////////////////////////////////////////////
+// FORM
+////////////////////////////////////////////////
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 1340px;
+}
+
+#inputTextName-container,
+#inputNumberNum-container {
+  display: flex;
+  gap: 12px;
+}
+
+#submitName,
+#submitNum {
+  background-color: $inputBg;
+  width: 83px;
+  font-family: "Barlow Condensed", sans-serif;
+  border: none;
+  border-radius: 8px;
+  &:hover {
+    cursor: pointer;
+    background-color: hsl(0, 0%, 75%);
+  }
+}
+
+.bi-search {
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+.input {
+  &Title {
+    margin: 16px 16px 16px 0px;
+    width: max-content;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: left;
+    background: transparent;
+    border: none;
+    overflow: hidden;
+    &--hover {
+      &:hover {
+        cursor: pointer;
+      }
+      &::after {
+        content: "";
+        display: block;
+        margin-top: -3px;
+        width: 100%;
+        height: 2px;
+        background: black;
+        transform: translateX(-105%);
+      }
+      &:hover::after {
+        transform: translateX(0);
+        transition: all 0.15s ease-in-out;
+      }
+    }
+  }
+  &Element {
+    padding: 20px 12px;
+    width: 100%;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 1.2rem;
+    background-color: $inputBg;
+    border: none;
+    border-radius: 8px;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      appearance: none;
+    }
+    &::placeholder {
+      opacity: 0.5;
+      margin-left: 12px;
+    }
+  }
+  &Check-container,
+  &Stat-container {
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+  }
+  &Check-icon,
+  &Stat-icon {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  &Check-label,
+  &Stat-label {
+    position: relative;
+    padding: 20px 8px;
+    display: inline-block;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white;
+    &:hover {
+      cursor: pointer;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      right: 12px;
+      top: calc(50% - 10px);
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+  }
+  &Check-checkbox {
+    display: none;
+    &:checked + .inputCheck-label::before {
+      background-color: white;
+    }
+  }
+  &Stat-radio {
+    display: none;
+
+    &:checked + .inputStat-label::before {
+      background-color: white;
+    }
+  }
+}
+
+#rangeContainer {
+  height: 0;
+  visibility: hidden;
+  display: none;
+  margin: 32px 0;
+}
+
+.favBtn {
+  position: fixed;
+  right: 0;
+  top: 25vh;
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: $inputBg;
+  border-radius: 8px 0 0 8px;
+  font-size: 1.5rem;
+  z-index: 9;
+  cursor: pointer;
+  &:hover {
+    background-color: $rojoPrimario;
+    transition: 0.2s all ease;
+  }
+  .bi-heart {
+    opacity: 0.6;
+  }
+}
+
+.icon {
+  &-acero {
+    background-image: url("../assets/icons/steel.svg");
+  }
+  &-agua {
+    background-image: url("../assets/icons/water.svg");
+  }
+  &-bicho {
+    background-image: url("../assets/icons/bug.svg");
+  }
+  &-dragon {
+    background-image: url("../assets/icons/dragon.svg");
+  }
+  &-electrico {
+    background-image: url("../assets/icons/electric.svg");
+  }
+  &-fantasma {
+    background-image: url("../assets/icons/ghost.svg");
+  }
+  &-fuego {
+    background-image: url("../assets/icons/fire.svg");
+  }
+  &-hada {
+    background-image: url("../assets/icons/fairy.svg");
+  }
+  &-hielo {
+    background-image: url("../assets/icons/ice.svg");
+  }
+  &-lucha {
+    background-image: url("../assets/icons/fighting.svg");
+  }
+  &-normal {
+    background-image: url("../assets/icons/normal.svg");
+  }
+  &-planta {
+    background-image: url("../assets/icons/grass.svg");
+  }
+  &-psiquico {
+    background-image: url("../assets/icons/psychic.svg");
+  }
+  &-roca {
+    background-image: url("../assets/icons/rock.svg");
+  }
+  &-siniestro {
+    background-image: url("../assets/icons/dark.svg");
+  }
+  &-tierra {
+    background-image: url("../assets/icons/ground.svg");
+  }
+  &-veneno {
+    background-image: url("../assets/icons/poison.svg");
+  }
+  &-volador {
+    background-image: url("../assets/icons/flying.svg");
+  }
+  &-hp {
+    background-image: url("../assets/icons/ps.svg");
+  }
+  &-atq {
+    background-image: url("../assets/icons/ataque-normal.svg");
+  }
+  &-def {
+    background-image: url("../assets/icons/defensa-normal.svg");
+  }
+  &-atqSp {
+    background-image: url("../assets/icons/ataque-especial.svg");
+  }
+  &-defSp {
+    background-image: url("../assets/icons/defensa-especial.svg");
+  }
+  &-speed {
+    background-image: url("../assets/icons/velocidad.svg");
+  }
+}
+
+#typeCheckbox-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  gap: 16px;
+  margin: 0 auto;
+  width: 100%;
+  height: 0px;
+  visibility: hidden;
+  display: none;
+}
+
+#radioStat-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 16px;
+  margin: 0 auto;
+  width: 100%;
+  height: 0px;
+  visibility: hidden;
+  display: none;
+}
+
+.minRange-container,
+.maxRange-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  width: 100%;
+  position: relative;
+}
+#minRange,
+#maxRange {
+  position: relative;
+  appearance: none;
+  background-color: transparent;
+  width: 100%;
+  height: 20px;
+  outline: none;
+  border-radius: 8px;
+  margin: 4px;
+  z-index: 3;
+  border: 1px solid black;
+  &::-webkit-slider-thumb {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    appearance: none;
+    z-index: 3;
+    cursor: pointer;
+  }
+}
+
+.range {
+  &Selector-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    bottom: calc(50% - 22px);
+    left: calc(50% - 20px);
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+  &Selector {
+    display: block;
+    height: 40px;
+    width: 40px;
+    background-image: url(../assets/img/pokeball-rango.svg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+  }
+}
+
+#rangeValue-min,
+#rangeValue-max {
+  position: absolute;
+  top: -35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 20px;
+  color: whitesmoke;
+  font-weight: 500;
+  background-color: $rojoPrimario;
+  border-radius: 4px 4px 0 0;
+  &::before {
+    content: "";
+    height: 0px;
+    width: 0px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid $rojoPrimario;
+    border-bottom: 15px solid transparent;
+    position: absolute;
+    left: 0;
+    bottom: -30px;
+  }
+}
+
+#progressBar-min,
+#progressBar-max {
+  display: block;
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 4px;
+  width: 48%;
+  height: 20px;
+  background-color: $rojoPrimario;
+  border-radius: 8px;
+}
+
+.rangeBar-title {
+  font-weight: 500;
+  font-size: 1.5rem;
+}

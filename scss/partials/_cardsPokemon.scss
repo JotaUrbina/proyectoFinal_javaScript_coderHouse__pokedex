@@ -1,0 +1,276 @@
+@import "./variables";
+
+////////////////////////////////////////////////
+// CARDS
+////////////////////////////////////////////////
+
+#cards-parent {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 1340px;
+}
+.bg {
+  &-acero {
+    background-color: $acero;
+  }
+  &-agua {
+    background-color: $agua;
+  }
+  &-bicho {
+    background-color: $bicho;
+  }
+  &-dragon {
+    background-color: $dragon;
+  }
+  &-electrico {
+    background-color: $electrico;
+  }
+  &-fantasma {
+    background-color: $fantasma;
+  }
+  &-fuego {
+    background-color: $fuego;
+  }
+  &-hada {
+    background-color: $hada;
+  }
+  &-hielo {
+    background-color: $hielo;
+  }
+  &-lucha {
+    background-color: $lucha;
+  }
+  &-normal {
+    background-color: $normal;
+  }
+  &-planta {
+    background-color: $planta;
+  }
+  &-psiquico {
+    background-color: $psiquico;
+  }
+  &-roca {
+    background-color: $roca;
+  }
+  &-siniestro {
+    background-color: $siniestro;
+  }
+  &-tierra {
+    background-color: $tierra;
+  }
+  &-veneno {
+    background-color: $veneno;
+  }
+  &-volador {
+    background-color: $volador;
+  }
+  &-hp {
+    background-color: $hp;
+  }
+  &-physical {
+    background-color: $fisico;
+  }
+  &-special {
+    background-color: $especial;
+  }
+  &-speed {
+    background-color: $velocidad;
+  }
+}
+
+.card {
+  width: 310px;
+  height: auto;
+  border-radius: 12px;
+  &-top-container {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 310px;
+    min-width: 272px;
+    max-width: 310px;
+    height: 200px;
+    z-index: 1;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 12px;
+    padding-left: 12px;
+    width: 65%;
+    z-index: 1;
+  }
+  &-title {
+    color: whitesmoke;
+    font-size: 3.2rem;
+    font-weight: 700;
+    z-index: 5;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+  &-txt-1,
+  &-txt-2 {
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: whitesmoke;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+  &-img {
+    position: absolute;
+    right: -30px;
+    bottom: -10px;
+    width: 60%;
+    height: 100%;
+    z-index: 3;
+    .img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &-heart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    color: whitesmoke;
+    font-size: 30px;
+    z-index: 4;
+    cursor: pointer;
+    .fa-heart,
+    .heart-checkbox {
+      z-index: 4;
+      cursor: pointer;
+    }
+  }
+  &-typeIcon {
+    position: absolute;
+    left: 12px;
+    bottom: 20px;
+    width: 10%;
+  }
+  &-btn {
+    position: absolute;
+    bottom: 0px;
+    left: calc(50% - 25px);
+    margin: 0;
+    padding: 8px;
+    width: 50px;
+    font-size: 16px;
+    color: whitesmoke;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 3;
+    &--down:hover {
+      animation: cardArrowHover 1s linear infinite;
+    }
+  }
+  &-stat-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 60px);
+    align-content: center;
+    padding: 0 12px;
+    width: 310px;
+    height: 0px;
+    visibility: hidden;
+    color: whitesmoke;
+  }
+}
+
+.stat {
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    height: 60px;
+    border-top: 1px solid whitesmoke;
+  }
+  &-title {
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+  &-txt {
+    font-size: 3rem;
+    font-weight: 600;
+  }
+  &-acero {
+    color: $aceroLight;
+  }
+  &-agua {
+    color: $aguaLight;
+  }
+  &-bicho {
+    color: $bichoLight;
+  }
+  &-dragon {
+    color: $dragonLight;
+  }
+  &-electrico {
+    color: $electricoLight;
+  }
+  &-fantasma {
+    color: $fantasmaLight;
+  }
+  &-fuego {
+    color: $fuegoLight;
+  }
+  &-hada {
+    color: $hadaLight;
+  }
+  &-hielo {
+    color: $hieloLight;
+  }
+  &-lucha {
+    color: $luchaLight;
+  }
+  &-normal {
+    color: $normalLight;
+  }
+  &-planta {
+    color: $plantaLight;
+  }
+  &-psiquico {
+    color: $psiquicoLight;
+  }
+  &-roca {
+    color: $rocaLight;
+  }
+  &-siniestro {
+    color: $siniestroLight;
+  }
+  &-tierra {
+    color: $tierraLight;
+  }
+  &-veneno {
+    color: $venenoLight;
+  }
+  &-volador {
+    color: $voladorLight;
+  }
+}
+
+.heart {
+  &-checkbox {
+    position: absolute;
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}

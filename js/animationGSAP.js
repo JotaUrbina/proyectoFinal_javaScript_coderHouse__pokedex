@@ -31,12 +31,12 @@ const deployCardStat = (card, arrow) => {
         rotate: 180,
         translateY: 210,
       },
-      "-=0.2"
+      "-=0.2",
+      arrow.classList.toggle("card-btn--down")
     );
   } else {
     gsap.to(card, {
       duration: 0.2,
-
       visibility: "hidden",
       height: 0,
     });
@@ -47,7 +47,8 @@ const deployCardStat = (card, arrow) => {
         rotate: 0,
         translateY: 0,
       },
-      "-=0.2"
+      "-=0.2",
+      arrow.classList.toggle("card-btn--down")
     );
   }
 };
@@ -66,8 +67,8 @@ const openAnimation = () => {
   tl.to(
     introWhite,
     {
-      duration: 2,
-      y: "100%",
+      duration: 1.5,
+      y: "50%",
       ease: "power3.out",
       display: "none",
     },

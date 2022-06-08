@@ -86,7 +86,7 @@ maxRange.oninput = function () {
 // evento MIS FAVORITOS
 formulario.addEventListener("click", (e) => {
   e.target === favoriteBtn && localStorage.length > 0 && printPkmnList(favoritePkmn);
-  if (e.target === favoriteBtn) {
+  if (e.target === favoriteBtn && localStorage.length === 0) {
     notFavoriteAlert();
     animationClickHeartAlert();
   }
@@ -114,6 +114,7 @@ cardsParent.addEventListener("change", (e) => {
     } else {
       deleteLocalStorage(namePkmn);
       heartCheckbox.setAttribute("data-check", "fa-regular");
+      printPkmnList(favoritePkmn);
     }
   }
 });
