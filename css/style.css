@@ -382,6 +382,15 @@ form {
   background-color: white;
 }
 
+#arrowTypeTitle,
+#arrowStatTitle {
+  position: relative;
+  top: -4px;
+  font-size: 0.5rem;
+  margin-left: 4px;
+  z-index: -1;
+}
+
 #rangeContainer {
   height: 0;
   visibility: hidden;

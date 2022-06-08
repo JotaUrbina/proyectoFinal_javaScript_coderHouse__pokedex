@@ -10,7 +10,9 @@ formulario.addEventListener("submit", (e) => {
 formulario.addEventListener("click", (e) => {
   let inputContainer = e.target.nextElementSibling;
   e.target === typeBtnTitle && deployInput(inputContainer);
+  e.target === typeBtnTitle && rotateArrowTitle(inputContainer, arrowTypeTitle);
   e.target === statBtnTitle && deployInput(inputContainer);
+  e.target === statBtnTitle && rotateArrowTitle(inputContainer, arrowStatTitle);
   e.target === document.querySelector(".statBtn") && deployInput(rangeContainer);
 });
 

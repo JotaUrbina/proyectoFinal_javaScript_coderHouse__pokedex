@@ -16,6 +16,20 @@ const deployInput = (input) => {
   }
 };
 
+const rotateArrowTitle = (container, arrow) => {
+  if (getComputedStyle(container).visibility === "hidden") {
+    gsap.to(arrow, {
+      duration: 0.2,
+      rotate: 180,
+    });
+  } else {
+    gsap.to(arrow, {
+      duration: 0.2,
+      rotate: 0,
+    });
+  }
+};
+
 const deployCardStat = (card, arrow) => {
   if (getComputedStyle(card).visibility === "hidden") {
     gsap.to(card, {

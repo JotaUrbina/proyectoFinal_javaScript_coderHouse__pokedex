@@ -8,7 +8,6 @@ const formulario = document.getElementById("formulario");
 const datalistParent = document.getElementById("nombres");
 const inputName = document.getElementById("inputName");
 const submitName = document.getElementById("submitName");
-/* const optionDatalist = document.createElement("option"); */
 
 //container de inputs de sección NUMERO
 const inputNum = document.getElementById("inputNum");
@@ -17,10 +16,12 @@ const submitNum = document.getElementById("submitNum");
 //container de inputs de sección TIPO
 const typeParent = document.getElementById("typeCheckbox-container");
 const typeBtnTitle = document.getElementById("typeBtnTitle");
+const arrowTypeTitle = document.getElementById("arrowTypeTitle");
 
 //container de inputs de sección STAT + RANGE
 const statParent = document.getElementById("radioStat-container");
 const statBtnTitle = document.getElementById("statBtnTitle");
+const arrowStatTitle = document.getElementById("arrowStatTitle");
 
 const rangeContainer = document.getElementById("rangeContainer");
 const minRange = document.getElementById("minRange");
